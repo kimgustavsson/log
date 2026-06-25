@@ -7,25 +7,24 @@
 // Square-ish images (roughly 4:5) look best. 4–8 of them is ideal.
 // The defaults below are inline SVG placeholders so it works before you add any.
 
-const placeholder = (n: string, bg: string, fg: string): string =>
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="380"><rect width="300" height="380" fill="${bg}"/><text x="150" y="205" font-family="Georgia,serif" font-style="italic" font-size="90" fill="${fg}" text-anchor="middle">${n}</text></svg>`
-  );
-
 const images: string[] = [
-  placeholder('01', '#143186', '#f2f1df'),
-  placeholder('02', '#b0d2f6', '#143186'),
-  placeholder('03', '#c0c5db', '#143186'),
-  placeholder('04', '#f2f1df', '#143186'),
-  placeholder('05', '#385fae', '#f2f1df'),
+  "/photos/photo1.jpg",
+  "/photos/photo2.jpg",
+  "/photos/photo3.jpg",
+  "/photos/photo4.jpg",
+  "/photos/photo5.jpg",
+  "/photos/photo6.jpg",
+  "/photos/photo7.jpg",
+  "/photos/photo8.jpg",
+  "/photos/photo9.jpg",
+  "/photos/photo10.jpg",
 ];
 
 export function initPhotoTrail(): void {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) return;
 
-  const hero = document.getElementById('top');
+  const hero = document.getElementById("top");
   if (!hero) return;
 
   // Preload so the first stamps don't flicker.
@@ -34,7 +33,7 @@ export function initPhotoTrail(): void {
     img.src = src;
   });
 
-  hero.style.position = 'relative'; // positioning context for absolute stamps
+  hero.style.position = "relative"; // positioning context for absolute stamps
 
   let index = 0;
   let lastTime = 0;
@@ -42,7 +41,7 @@ export function initPhotoTrail(): void {
   let lastY = 0;
 
   hero.addEventListener(
-    'mousemove',
+    "mousemove",
     (e) => {
       const now = performance.now();
       const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
@@ -53,7 +52,7 @@ export function initPhotoTrail(): void {
       lastY = e.clientY;
 
       const rect = hero.getBoundingClientRect();
-      const img = document.createElement('img');
+      const img = document.createElement("img");
       img.src = images[index % images.length];
       index++;
       const rot = (Math.random() * 14 - 7).toFixed(1);
@@ -63,17 +62,17 @@ export function initPhotoTrail(): void {
       // Animate in on the next frame.
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
-          img.style.opacity = '1';
+          img.style.opacity = "1";
           img.style.transform = `translate(-50%,-50%) rotate(${rot}deg) scale(1)`;
-        })
+        }),
       );
       // Fade out, then remove from the DOM.
       setTimeout(() => {
-        img.style.opacity = '0';
+        img.style.opacity = "0";
         img.style.transform = `translate(-50%,-58%) rotate(${rot}deg) scale(.96)`;
       }, 650);
       setTimeout(() => img.remove(), 1400);
     },
-    { passive: true }
+    { passive: true },
   );
 }
