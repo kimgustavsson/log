@@ -1,0 +1,28 @@
+---
+// Dynamic route for writing posts. Mirrors the dev log route — same pattern,
+// different collection — so both sections stay consistent.
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('writing', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<PostLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  date={entry.data.date}
+  tags={entry.data.tags}
+  slug={`writing/${entry.id}`}
+  section="Writing"
+>
+  <Content />
+</PostLayout>

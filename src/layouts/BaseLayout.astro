@@ -1,0 +1,61 @@
+---
+// The HTML shell shared by every page: <head> with fonts and meta, the nav,
+// a slot for page content, the footer, and the script initializers. Editing
+// site-wide structure (fonts, meta tags, analytics) happens here, once.
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Show the left scroll-position rail (home page only). */
+  showRail?: boolean;
+}
+const {
+  title = 'your name — dev log & writing',
+  description = 'Notes on building software — a dev log and longer writing.',
+  showRail = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Nav />
+
+    {showRail && (
+      <div class="rail" id="rail">
+        <a href="#top" data-sec="top"><span class="rdot"></span><span class="rname">Intro</span></a>
+        <a href="#devlog" data-sec="devlog"><span class="rdot"></span><span class="rname">Dev log</span></a>
+        <a href="#writing" data-sec="writing"><span class="rdot"></span><span class="rname">Writing</span></a>
+      </div>
+    )}
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      // Wire up the shared behaviors. Each module owns one concern.
+      import { initReveal } from '../scripts/reveal';
+      import { initScrollRail } from '../scripts/scroll-rail';
+      initReveal();
+      initScrollRail();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+// A titled list of posts. Renders the section label, heading, count, then a
+// PostRow for each entry. Used for both dev log and writing by passing a
+// different `variant` (which decides whether the left column is a date or a
+// number) and a different set of posts.
+import PostRow from './PostRow.astro';
+
+interface PostItem {
+  slug: string;
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+}
+interface Props {
+  id: string;            // anchor id, e.g. "devlog"
+  label: string;         // small uppercase label
+  heading: string;       // big serif heading
+  basePath: string;      // url prefix, e.g. "/devlog"
+  variant: 'date' | 'number';
+  posts: PostItem[];
+}
+const { id, label, heading, basePath, variant, posts } = Astro.props;
+
+// Format the left-hand meta column based on the variant.
+function metaFor(post: PostItem, index: number): string {
+  if (variant === 'number') {
+    return 'No. ' + String(posts.length - index).padStart(2, '0');
+  }
+  // date variant: "2026 · June"
+  const month = post.date.toLocaleString('en-US', { month: 'long' });
+  return `${post.date.getFullYear()} · ${month}`;
+}
+
+const countLabel = variant === 'number' ? 'Essays & ideas' : `${posts.length} entries`;
+---
+
+<div class="wrap">
+  <div class="sec-label">{label}</div>
+  <div class="head-row">
+    <h2>{heading}</h2>
+    <span class="count">{countLabel}</span>
+  </div>
+
+  <div class="list">
+    {posts.map((post, i) => (
+      <PostRow
+        href={`${basePath}/${post.slug}/`}
+        meta={metaFor(post, i)}
+        title={post.title}
+        description={post.description}
+        tags={post.tags}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .list { margin-top: 30px; }
+</style>

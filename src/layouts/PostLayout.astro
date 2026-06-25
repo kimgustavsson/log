@@ -1,0 +1,75 @@
+---
+// Layout for a single post page. Wraps the rendered Markdown in a readable
+// article column with a title, date, view counter, and tags.
+//
+// COMMENTS ARE CURRENTLY DISABLED. The Comments component still exists at
+// src/components/Comments.astro (Giscus is already installed on the repo).
+// To re-enable comments later: uncomment the import below AND the <Comments />
+// line further down. Nothing else needs to change.
+import BaseLayout from './BaseLayout.astro';
+import ViewCounter from '../components/ViewCounter.astro';
+// import Comments from '../components/Comments.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  slug: string;        // unique key for the view counter (e.g. "devlog/my-post")
+  section: string;     // "Dev log" or "Writing", shown as an eyebrow label
+}
+const { title, description, date, tags, slug, section } = Astro.props;
+const dateLabel = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={`${title} — your name`} description={description}>
+  <article class="post-page">
+    <div class="wrap">
+      <a class="back" href="/">← back</a>
+      <div class="eyebrow">{section}</div>
+      <h1>{title}</h1>
+      <div class="post-meta">
+        <span>{dateLabel}</span>
+        <ViewCounter slug={slug} />
+      </div>
+      {tags.length > 0 && (
+        <div class="post-tags">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      )}
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+
+  {/* Comments disabled for now. Uncomment the next line (and the import at
+      the top) to bring them back. */}
+  {/* <Comments /> */}
+</BaseLayout>
+
+<style>
+  .post-page { padding: 140px clamp(24px, 9vw, 140px) clamp(40px, 6vh, 72px); }
+  .post-page .wrap { max-width: 720px; margin: 0 auto; }
+  .back { font-size: 13px; color: var(--muted); display: inline-block; margin-bottom: 34px; transition: color .25s; }
+  .back:hover { color: var(--luxe); }
+  .eyebrow { font-size: 12.5px; letter-spacing: .08em; color: var(--luxe); text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 5vw, 56px); letter-spacing: -.025em; line-height: 1.05; color: var(--luxe); margin-bottom: 20px; }
+  .post-meta { display: flex; align-items: center; gap: 18px; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .post-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 40px; }
+  .post-tags .tag { font-size: 11px; letter-spacing: .03em; color: var(--luxe); border: 1px solid var(--line-strong); padding: 3px 10px; border-radius: 100px; }
+
+  /* Article body typography */
+  .prose { font-size: 17px; line-height: 1.7; color: var(--ink); }
+  .prose :global(h2) { font-family: var(--serif); font-weight: 500; font-size: 28px; color: var(--luxe); margin: 44px 0 16px; letter-spacing: -.01em; }
+  .prose :global(h3) { font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--luxe); margin: 32px 0 12px; }
+  .prose :global(p) { margin: 0 0 20px; }
+  .prose :global(a) { color: var(--luxe); text-decoration: underline; text-underline-offset: 3px; }
+  .prose :global(ul), .prose :global(ol) { margin: 0 0 20px; padding-left: 22px; }
+  .prose :global(li) { margin-bottom: 8px; }
+  .prose :global(blockquote) { border-left: 2px solid var(--line-strong); padding-left: 20px; margin: 0 0 20px; font-style: italic; color: var(--muted); }
+  .prose :global(code) { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .9em; background: var(--seafoam); padding: 2px 6px; border-radius: 4px; }
+  .prose :global(pre) { background: #0e1f4d; color: #f2f1df; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 0 0 24px; font-size: 14px; line-height: 1.6; }
+  .prose :global(pre code) { background: none; padding: 0; color: inherit; }
+  .prose :global(img) { max-width: 100%; border-radius: 6px; margin: 12px 0; }
+</style>

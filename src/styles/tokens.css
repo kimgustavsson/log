@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Design tokens — the single source of truth for color, type, and spacing.
+   Change a value here and it updates everywhere. Never hardcode these
+   values in component files; always reference var(--token-name).
+   ========================================================================== */
+:root {
+  /* Brand palette (from the chosen blue scheme) */
+  --luxe: #143186;        /* primary — headlines, links, accents */
+  --baby: #b0d2f6;        /* light accent */
+  --grey-blue: #c0c5db;   /* muted accent / alt surfaces */
+  --seafoam: #f2f1df;     /* warm near-white section background */
+  --white: #ffffff;
+  --ink: #0e1f4d;         /* deep text */
+  --muted: #5b5f70;       /* secondary text */
+
+  /* Derived line colors (kept as tokens so hover/active states stay consistent) */
+  --line: rgba(20, 49, 134, 0.16);
+  --line-strong: rgba(20, 49, 134, 0.32);
+
+  /* Typography */
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Layout */
+  --maxw-hero: 1480px;    /* wide hero band */
+  --maxw-content: 1040px; /* narrower reading column for lists */
+}

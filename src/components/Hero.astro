@@ -1,0 +1,36 @@
+---
+// Hero section: the "Mission"-style scattered layout with a label, a caption,
+// and a justified body paragraph. The cinematic entrance animation and the
+// hero-only photo trail are wired up in src/scripts (imported by BaseLayout).
+//
+// Props let you reuse this hero with different copy without touching markup.
+interface Props {
+  label?: string;
+  caption?: string;
+  body?: string;
+}
+const {
+  label = 'Mission',
+  caption = 'What is\nyour blog?',
+  body = "At your blog, I write about the craft of building software — the messy middle of shipping things, not just the polished result. Notes on code, experiments that didn't work, and the occasional small win. Thinking out loud, in public.",
+} = Astro.props;
+
+// Split the body into lines for the staggered line-mask reveal.
+const bodyLines = body.match(/.{1,46}(\s|$)/g) ?? [body];
+---
+
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="h-label" id="hlabel" aria-label={label}>{label}</div>
+    <div class="h-cap fade-up" data-delay="700" set:html={caption.replace(/\n/g, '<br>')} />
+    <div class="h-body" id="hbody">
+      {bodyLines.map((line) => (
+        <span class="bline"><span>{line.trim()}</span></span>
+      ))}
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <span class="scroll-cue"><span class="bar"></span>Scroll</span>
+  </div>
+</header>
