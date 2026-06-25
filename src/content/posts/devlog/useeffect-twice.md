@@ -1,5 +1,5 @@
 ---
-title: "Why does my useEffect run twice?"
+title: "ELias i love you heehehehehehee"
 description: "A short note on React StrictMode, cleanup functions, and the double-invoke that trips everyone up."
 date: 2026-06-05
 tags: ["react", "frontend"]
