@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — your name</title>
+    <meta
+      name="description"
+      content="Working notes on artificial intelligence, software development, and the process of building intelligent systems."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/_astro/_slug_.DPiLuSlX.css" />
+    <style>
+      .about[data-astro-cid-kh7btl4r] {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 132px clamp(24px, 6vw, 56px) 60px;
+      }
+      .ab-block[data-astro-cid-kh7btl4r] {
+        padding: clamp(34px, 6vh, 60px) 0;
+        border-top: 1px solid var(--line);
+      }
+      .ab-block[data-astro-cid-kh7btl4r]:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .eyebrow[data-astro-cid-kh7btl4r] {
+        font-size: 12.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--luxe);
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+      .about[data-astro-cid-kh7btl4r] h1[data-astro-cid-kh7btl4r] {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(34px, 5vw, 54px);
+        letter-spacing: -0.02em;
+        line-height: 1.04;
+        color: var(--luxe);
+        margin-bottom: 22px;
+      }
+      .lead[data-astro-cid-kh7btl4r] {
+        font-size: clamp(16px, 1.6vw, 19px);
+        line-height: 1.6;
+        color: var(--ink);
+        max-width: 60ch;
+      }
+      .resume[data-astro-cid-kh7btl4r] {
+        display: inline-block;
+        margin-top: 26px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--luxe);
+        border: 1px solid var(--line-strong);
+        border-radius: 100px;
+        padding: 9px 20px;
+        transition:
+          background 0.25s,
+          color 0.25s;
+      }
+      .resume[data-astro-cid-kh7btl4r]:hover {
+        background: var(--luxe);
+        color: var(--white);
+      }
+      .about[data-astro-cid-kh7btl4r] h2[data-astro-cid-kh7btl4r] {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(24px, 3vw, 34px);
+        letter-spacing: -0.01em;
+        color: var(--luxe);
+        margin-bottom: 28px;
+      }
+      .cards[data-astro-cid-kh7btl4r] {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+      .card[data-astro-cid-kh7btl4r] h3[data-astro-cid-kh7btl4r] {
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 9px;
+      }
+      .card[data-astro-cid-kh7btl4r] p[data-astro-cid-kh7btl4r] {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--muted);
+        max-width: 62ch;
+      }
+      .skills[data-astro-cid-kh7btl4r] {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 40px;
+      }
+      .skill[data-astro-cid-kh7btl4r] h4[data-astro-cid-kh7btl4r] {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--luxe);
+        margin-bottom: 10px;
+      }
+      .skill[data-astro-cid-kh7btl4r] p[data-astro-cid-kh7btl4r] {
+        font-size: 14.5px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+      .exp[data-astro-cid-kh7btl4r] {
+        display: flex;
+        flex-direction: column;
+      }
+      .exp-row[data-astro-cid-kh7btl4r] {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 6px 24px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+      .exp-row[data-astro-cid-kh7btl4r]:first-child {
+        border-top: none;
+      }
+      .exp-period[data-astro-cid-kh7btl4r] {
+        font-size: 13px;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .exp-role[data-astro-cid-kh7btl4r] {
+        font-size: 15.5px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .exp-field[data-astro-cid-kh7btl4r] {
+        grid-column: 2;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .exp-note[data-astro-cid-kh7btl4r] {
+        margin-top: 22px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .exp-note[data-astro-cid-kh7btl4r] a[data-astro-cid-kh7btl4r] {
+        color: var(--luxe);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .contact[data-astro-cid-kh7btl4r] {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .c-row[data-astro-cid-kh7btl4r] h4[data-astro-cid-kh7btl4r] {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 5px;
+      }
+      .c-row[data-astro-cid-kh7btl4r] a[data-astro-cid-kh7btl4r] {
+        font-size: 16px;
+        color: var(--ink);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s;
+      }
+      .c-row[data-astro-cid-kh7btl4r] a[data-astro-cid-kh7btl4r]:hover {
+        color: var(--luxe);
+      }
+      .page-end[data-astro-cid-kh7btl4r] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 34px;
+        margin-top: 20px;
+        border-top: 1px solid var(--line);
+      }
+      .end-link[data-astro-cid-kh7btl4r] {
+        font-size: 14px;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .end-link[data-astro-cid-kh7btl4r]:hover {
+        color: var(--luxe);
+      }
+      @media (max-width: 620px) {
+        .skills[data-astro-cid-kh7btl4r],
+        .exp-row[data-astro-cid-kh7btl4r] {
+          grid-template-columns: 1fr;
+        }
+        .exp-field[data-astro-cid-kh7btl4r] {
+          grid-column: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav" data-astro-cid-dmqpwcec>
+      <div class="nav-inner" data-astro-cid-dmqpwcec>
+        <a class="logo" href="/" data-astro-cid-dmqpwcec>
+          Kim Dasha Gustavsson</a
+        >
+        <button
+          class="menu-toggle"
+          id="mtoggle"
+          aria-label="Toggle menu"
+          data-astro-cid-dmqpwcec
+        >
+          Menu
+        </button>
+        <div class="nav-links" id="navlinks" data-astro-cid-dmqpwcec>
+          <a href="/#devlog" data-astro-cid-dmqpwcec>Dev Log</a
+          ><a href="/#writing" data-astro-cid-dmqpwcec>Writing</a
+          ><a href="/about" data-astro-cid-dmqpwcec>About</a
+          ><a
+            class="ext"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener"
+            data-astro-cid-dmqpwcec
+            >Linkedin</a
+          >
+        </div>
+      </div>
+    </nav>
+    <script type="module">
+      const l = document.getElementById("nav");
+      addEventListener(
+        "scroll",
+        () => l?.classList.toggle("scrolled", scrollY > 40),
+        { passive: !0 },
+      );
+      const e = document.getElementById("mtoggle"),
+        n = document.getElementById("navlinks");
+      e?.addEventListener("click", () => {
+        const t = n?.classList.toggle("open");
+        e && (e.textContent = t ? "Close" : "Menu");
+      });
+      n?.querySelectorAll("a").forEach((t) =>
+        t.addEventListener("click", () => {
+          (n.classList.remove("open"), e && (e.textContent = "Menu"));
+        }),
+      );
+    </script>
+    <nav class="rail" id="rail" aria-label="Table of contents">
+      <span class="rail-title">Contents</span>
+      <a href="#intro" data-sec="intro"
+        ><span class="rdot"></span><span class="rname">Intro</span></a
+      ><a href="#now" data-sec="now"
+        ><span class="rdot"></span
+        ><span class="rname">What I’m doing now</span></a
+      ><a href="#approach" data-sec="approach"
+        ><span class="rdot"></span><span class="rname">How I work</span></a
+      ><a href="#skills" data-sec="skills"
+        ><span class="rdot"></span
+        ><span class="rname">What I work with</span></a
+      ><a href="#experience" data-sec="experience"
+        ><span class="rdot"></span><span class="rname">Experience</span></a
+      ><a href="#contact" data-sec="contact"
+        ><span class="rdot"></span><span class="rname">Contact</span></a
+      >
+    </nav>
+    <main>
+      <article class="about" data-astro-cid-kh7btl4r>
+        <section class="ab-block" id="intro" data-astro-cid-kh7btl4r>
+          <p class="eyebrow" data-astro-cid-kh7btl4r>About</p>
+          <h1 data-astro-cid-kh7btl4r>Kim Dasha Gustavsson</h1>
+          <p class="lead" data-astro-cid-kh7btl4r>
+            AI Master’s student with a designer’s eye and a developer’s hands. A
+            background in Informatics from Sweden — web, mobile, and design —
+            now turned toward machine learning. I build intelligent systems and
+            write about the work along the way.
+          </p>
+          <a
+            class="resume"
+            href="mailto:you@example.com"
+            rel="noopener"
+            data-astro-cid-kh7btl4r
+            >Contact ↗</a
+          >
+        </section>
+        <section class="ab-block" id="now" data-astro-cid-kh7btl4r>
+          <h2 data-astro-cid-kh7btl4r>What I’m doing now</h2>
+          <div class="cards" data-astro-cid-kh7btl4r>
+            <div class="card" data-astro-cid-kh7btl4r>
+              <h3 data-astro-cid-kh7btl4r>
+                Building intelligent systems, end to end
+              </h3>
+              <p data-astro-cid-kh7btl4r>
+                As an AI Master’s student, I design and build small ML-driven
+                tools from data to interface — owning the problem framing, the
+                model, and the experience around it. Right now I’m experimenting
+                with how these systems can stay genuinely useful and
+                human-centered, not just technically impressive.
+              </p>
+            </div>
+            <div class="card" data-astro-cid-kh7btl4r>
+              <h3 data-astro-cid-kh7btl4r>
+                Bridging design and machine learning
+              </h3>
+              <p data-astro-cid-kh7btl4r>
+                My background is in Informatics — web, mobile, and design — so I
+                tend to look at AI through a product lens: what does this
+                actually do for a person? I write and share what I learn as I
+                close the gap between the two.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="ab-block" id="approach" data-astro-cid-kh7btl4r>
+          <h2 data-astro-cid-kh7btl4r>How I work</h2>
+          <div class="cards" data-astro-cid-kh7btl4r>
+            <div class="card" data-astro-cid-kh7btl4r>
+              <h3 data-astro-cid-kh7btl4r>Start from the real problem</h3>
+              <p data-astro-cid-kh7btl4r>
+                Before building, I try to understand what’s actually being asked
+                — talking to users, questioning assumptions, and reframing the
+                problem until it’s the right one.
+              </p>
+            </div>
+            <div class="card" data-astro-cid-kh7btl4r>
+              <h3 data-astro-cid-kh7btl4r>Think in structure</h3>
+              <p data-astro-cid-kh7btl4r>
+                I sketch the flow and the data model before the screens. As more
+                of the work gets automated, this underlying structure matters
+                more than surface detail.
+              </p>
+            </div>
+            <div class="card" data-astro-cid-kh7btl4r>
+              <h3 data-astro-cid-kh7btl4r>Iterate quickly</h3>
+              <p data-astro-cid-kh7btl4r>
+                With the boundaries between design, data, and development
+                blurring, I move fast — building, testing, and refining in tight
+                loops.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="ab-block" id="skills" data-astro-cid-kh7btl4r>
+          <h2 data-astro-cid-kh7btl4r>What I work with</h2>
+          <div class="skills" data-astro-cid-kh7btl4r>
+            <div class="skill" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>AI / ML</h4>
+              <p data-astro-cid-kh7btl4r>
+                Python, PyTorch, scikit-learn, LLM APIs and prompt design, data
+                pipelines, model evaluation, retrieval-augmented generation.
+              </p>
+            </div>
+            <div class="skill" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>Design / Product</h4>
+              <p data-astro-cid-kh7btl4r>
+                Figma, user research and interviews, problem framing, UX for web
+                and mobile, turning ambiguous needs into scoped, shippable work.
+              </p>
+            </div>
+            <div class="skill" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>Engineering</h4>
+              <p data-astro-cid-kh7btl4r>
+                TypeScript, web and mobile development, working with APIs and
+                databases, comfortable building and deploying small full-stack
+                tools.
+              </p>
+            </div>
+            <div class="skill" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>Communication</h4>
+              <p data-astro-cid-kh7btl4r>
+                Translating technical work for non-experts, aligning teams on
+                goals, and writing to think clearly in public.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="ab-block" id="experience" data-astro-cid-kh7btl4r>
+          <h2 data-astro-cid-kh7btl4r>Experience</h2>
+          <div class="exp" data-astro-cid-kh7btl4r>
+            <div class="exp-row" data-astro-cid-kh7btl4r>
+              <span class="exp-period" data-astro-cid-kh7btl4r
+                >2025 — present</span
+              >
+              <span class="exp-role" data-astro-cid-kh7btl4r
+                >MSc in Artificial Intelligence</span
+              >
+              <span class="exp-field" data-astro-cid-kh7btl4r
+                >Coursework, research, and independent ML projects</span
+              >
+            </div>
+            <div class="exp-row" data-astro-cid-kh7btl4r>
+              <span class="exp-period" data-astro-cid-kh7btl4r
+                >20XX — 20XX</span
+              >
+              <span class="exp-role" data-astro-cid-kh7btl4r
+                >Company · Your role</span
+              >
+              <span class="exp-field" data-astro-cid-kh7btl4r
+                >What you worked on</span
+              >
+            </div>
+            <div class="exp-row" data-astro-cid-kh7btl4r>
+              <span class="exp-period" data-astro-cid-kh7btl4r
+                >20XX — 20XX</span
+              >
+              <span class="exp-role" data-astro-cid-kh7btl4r
+                >Company · Your role</span
+              >
+              <span class="exp-field" data-astro-cid-kh7btl4r
+                >What you worked on</span
+              >
+            </div>
+            <div class="exp-row" data-astro-cid-kh7btl4r>
+              <span class="exp-period" data-astro-cid-kh7btl4r
+                >20XX — 20XX</span
+              >
+              <span class="exp-role" data-astro-cid-kh7btl4r
+                >BSc / Informatics · Sweden</span
+              >
+              <span class="exp-field" data-astro-cid-kh7btl4r
+                >Web &amp; mobile development, design foundations</span
+              >
+            </div>
+          </div>
+          <p class="exp-note" data-astro-cid-kh7btl4r>
+            More detail — including earlier work — is on my
+            <a
+              href="https://www.linkedin.com/in/your-handle"
+              target="_blank"
+              rel="noopener"
+              data-astro-cid-kh7btl4r
+              >LinkedIn</a
+            >.
+          </p>
+        </section>
+        <section class="ab-block" id="contact" data-astro-cid-kh7btl4r>
+          <h2 data-astro-cid-kh7btl4r>Contact</h2>
+          <div class="contact" data-astro-cid-kh7btl4r>
+            <div class="c-row" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>Email</h4>
+              <a href="mailto:you@example.com" data-astro-cid-kh7btl4r
+                >you@example.com</a
+              >
+            </div>
+            <div class="c-row" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>LinkedIn</h4>
+              <a
+                href="https://www.linkedin.com/in/your-handle"
+                target="_blank"
+                rel="noopener"
+                data-astro-cid-kh7btl4r
+                >linkedin.com/in/your-handle</a
+              >
+            </div>
+            <div class="c-row" data-astro-cid-kh7btl4r>
+              <h4 data-astro-cid-kh7btl4r>GitHub</h4>
+              <a
+                href="https://github.com/your-handle"
+                target="_blank"
+                rel="noopener"
+                data-astro-cid-kh7btl4r
+                >github.com/your-handle</a
+              >
+            </div>
+          </div>
+        </section>
+        <div class="page-end" data-astro-cid-kh7btl4r>
+          <a class="end-link" href="/" data-astro-cid-kh7btl4r>← Home</a>
+          <a class="end-link" href="#" id="to-top" data-astro-cid-kh7btl4r
+            >Back to top ↑</a
+          >
+        </div>
+      </article>
+    </main>
+    <footer data-astro-cid-sz7xmlte>
+      <div class="foot-min" data-astro-cid-sz7xmlte>
+        <span data-astro-cid-sz7xmlte>© 2026 Kim Dasha Gustavsson</span>
+        <span class="links" data-astro-cid-sz7xmlte>
+          <a
+            href="www.linkedin.com/in/ki-d-gu"
+            target="_blank"
+            rel="noopener"
+            data-astro-cid-sz7xmlte
+            >Linkedin</a
+          ><a
+            href="https://github.com/kimgustavsson"
+            target="_blank"
+            rel="noopener"
+            data-astro-cid-sz7xmlte
+            >Github</a
+          >
+        </span>
+      </div>
+    </footer>
+    <script type="module">
+      function i() {
+        matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const o = document.getElementById("hlabel");
+        if (o) {
+          const e = o.textContent?.trim() ?? "";
+          ((o.textContent = ""),
+            [...e].forEach((t, s) => {
+              const n = document.createElement("span");
+              ((n.className = "ch"),
+                (n.textContent = t),
+                (n.style.transition =
+                  "transform .8s cubic-bezier(.16,1,.3,1), opacity .6s ease"),
+                (n.style.transitionDelay = `${0.12 + s * 0.05}s`),
+                o.appendChild(n));
+            }));
+        }
+        const c = () => {
+          (document.querySelectorAll("#hlabel .ch").forEach((e) => {
+            ((e.style.transform = "translateY(0)"), (e.style.opacity = "1"));
+          }),
+            document.querySelectorAll("#hbody .bline").forEach((e, t) => {
+              setTimeout(() => e.classList.add("in"), 650 + t * 85);
+            }),
+            document.querySelectorAll(".hero .fade-up").forEach((e) => {
+              const t = parseInt(e.dataset.delay || "0", 10);
+              setTimeout(() => e.classList.add("in"), t);
+            }));
+        };
+        document.readyState === "complete" ? c() : addEventListener("load", c);
+        const a = new IntersectionObserver(
+          (e) => {
+            e.forEach((t) => {
+              t.isIntersecting &&
+                (t.target.classList.add("in"), a.unobserve(t.target));
+            });
+          },
+          { threshold: 0.15 },
+        );
+        document
+          .querySelectorAll("section .fade-up")
+          .forEach((e) => a.observe(e));
+      }
+      function d() {
+        const o = document.getElementById("rail");
+        if (!o) return;
+        const c = [...o.querySelectorAll("a")],
+          e = c
+            .map((s) => s.dataset.sec)
+            .filter(Boolean)
+            .map((s) => document.getElementById(s))
+            .filter(Boolean),
+          t = new IntersectionObserver(
+            (s) => {
+              s.forEach((n) => {
+                if (n.isIntersecting) {
+                  const l = n.target.id;
+                  c.forEach((r) =>
+                    r.classList.toggle("active", r.dataset.sec === l),
+                  );
+                }
+              });
+            },
+            { threshold: 0.4 },
+          );
+        (e.forEach((s) => t.observe(s)),
+          addEventListener(
+            "scroll",
+            () => {
+              const s =
+                innerHeight + scrollY > document.body.scrollHeight - 120;
+              o.classList.toggle("hide", s);
+            },
+            { passive: !0 },
+          ));
+      }
+      i();
+      d();
+    </script>
+  </body>
+</html>
+<script type="module">
+  document.getElementById("to-top")?.addEventListener("click", (e) => {
+    (e.preventDefault(), window.scrollTo({ top: 0, behavior: "smooth" }));
+  });
+</script>

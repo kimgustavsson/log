@@ -17,29 +17,33 @@ const toc = [
 
 // ---- "What I'm doing now" cards ----
 const nowItems = [
-  {
-    title: 'Building intelligent systems, end to end',
-    body: 'As an AI Master’s student, I design and build small ML-driven tools from data to interface — owning the problem framing, the model, and the experience around it. Right now I’m experimenting with how these systems can stay genuinely useful and human-centered, not just technically impressive.',
+{
+    title: 'A 5-phase wearable AI roadmap',
+    body: 'I’m working through a step-by-step research project using sensor data, scaling from basic fall detection to predicting panic attacks. Right now, I’m in Phase 1: running an end-to-end ML pipeline with IMU data. I’m testing different form factors (like using my smartphone to collect data) to answer a specific question: Can we accurately detect abnormal movements from a low-stigma placement, like a necklace, rather than a bulky medical device?',
   },
   {
-    title: 'Bridging design and machine learning',
-    body: 'My background is in Informatics — web, mobile, and design — so I tend to look at AI through a product lens: what does this actually do for a person? I write and share what I learn as I close the gap between the two.',
+    title: 'Next up: Agentic systems for educators',
+    body: 'Looking ahead, I’m planning to build an agentic system designed specifically to help professors and teachers. The goal is to apply my background in informatics and practical AI to create intelligent tools that can genuinely streamline their workflows and reduce administrative friction.',
   },
 ];
 
 // ---- "How I work" principles ----
 const principles = [
   {
-    title: 'Start from the real problem',
-    body: 'Before building, I try to understand what’s actually being asked — talking to users, questioning assumptions, and reframing the problem until it’s the right one.',
+    title: 'Identify the real constraint',
+    body: 'Before writing any code, I try to figure out the actual bottleneck. Is it a tight deadline, a lack of clean data, or user stigma? I adapt my strategy based on what the project actually needs to succeed.',
   },
   {
-    title: 'Think in structure',
-    body: 'I sketch the flow and the data model before the screens. As more of the work gets automated, this underlying structure matters more than surface detail.',
+    title: 'Momentum over meetings',
+    body: 'When a team needs direction, a quick proof-of-concept is usually more effective than a long discussion. I prefer to build a rough prototype and let people interact with it. It aligns everyone faster and keeps the project moving.',
   },
   {
-    title: 'Iterate quickly',
-    body: 'With the boundaries between design, data, and development blurring, I move fast — building, testing, and refining in tight loops.',
+    title: 'Connect the whole pipeline',
+    body: 'I like to see the big picture—how raw data eventually becomes a user interface. I enjoy working closely with a team, exchanging feedback, and gradually figuring things out together. The process of solving a problem from end to end is what keeps me engaged.',
+  },
+  {
+    title: 'Build, break, iterate',
+    body: 'I expect things to fail on the first try, so I don’t over-plan. Once the main constraint is clear, I move fast. I just build a basic version, see where it breaks, and fix it until it works.',
   },
 ];
 
@@ -71,20 +75,20 @@ const experience = [
   { period: '20XX — 20XX', role: 'BSc / Informatics · Sweden', field: 'Web & mobile development, design foundations' },
 ];
 
-const RESUME_URL = '/resume.pdf'; // drop your PDF in /public as resume.pdf
 const EMAIL = 'you@example.com';
 const LINKEDIN = 'https://www.linkedin.com/in/your-handle';
 const GITHUB = 'https://github.com/your-handle';
 ---
 
-<BaseLayout title="About — your name" rail={toc} railTitle="Contents">
+<BaseLayout title="About — Kim Dasha Gustavsson" rail={toc} railTitle="Contents">
   <article class="about">
 
     <section class="ab-block" id="intro">
       <p class="eyebrow">About</p>
-      <h1>your name</h1>
-      <p class="lead">AI Master’s student with a designer’s eye and a developer’s hands. A background in Informatics from Sweden — web, mobile, and design — now turned toward machine learning. I build intelligent systems and write about the work along the way.</p>
-      <a class="resume" href={RESUME_URL} target="_blank" rel="noopener">Contact ↗</a>
+      <h1>Kim Dasha Gustavsson</h1>
+      <p class="lead">From studying Informatics in Sweden to pursuing a Master's in AI in Australia, I approach Artificial Intelligence as a builder.
+This space is an archive of my experiments and iterations. It is where I test ideas, hit technical roadblocks, and relentlessly figure out how to make them work.</p>
+      <a class="resume" href={`mailto:${EMAIL}`} rel="noopener">Contact ↗</a>
     </section>
 
     <section class="ab-block" id="now">
