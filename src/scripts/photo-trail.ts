@@ -56,7 +56,7 @@ export function initPhotoTrail(): void {
       img.src = images[index % images.length];
       index++;
       const rot = (Math.random() * 14 - 7).toFixed(1);
-      img.style.cssText = `position:absolute;z-index:2;pointer-events:none;left:${e.clientX - rect.left}px;top:${e.clientY - rect.top}px;width:118px;height:148px;object-fit:cover;border-radius:4px;transform:translate(-50%,-50%) rotate(${rot}deg) scale(.85);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1), opacity .7s ease;box-shadow:0 8px 30px rgba(20,49,134,.18);`;
+      img.style.cssText = `position:absolute;z-index:2;pointer-events:none;left:${e.clientX - rect.left}px;top:${e.clientY - rect.top}px;width:118px;height:148px;object-fit:cover;border-radius:4px;transform:translate(-50%,-50%) rotate(${rot}deg) scale(.85);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1), opacity .7s ease;background-color:transparent !important;filter:drop-shadow(0 8px 15px rgba(20,49,134,.18));`;
       hero.appendChild(img);
 
       // Animate in on the next frame.
