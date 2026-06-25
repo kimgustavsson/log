@@ -6,16 +6,23 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
+interface RailItem {
+  id: string;     // section id on the page (without #)
+  label: string;  // visible label in the table of contents
+}
 interface Props {
   title?: string;
   description?: string;
-  /** Show the left scroll-position rail (home page only). */
-  showRail?: boolean;
+  /** Pass a list of sections to show the left table-of-contents rail. */
+  rail?: RailItem[];
+  /** Heading shown above the rail (e.g. "Contents"). */
+  railTitle?: string;
 }
 const {
-  title = 'Kim Dasha Gustavsson',
+  title = 'your name — dev log & writing',
   description = 'Notes on building software — a dev log and longer writing.',
-  showRail = false,
+  rail = [],
+  railTitle = 'Contents',
 } = Astro.props;
 ---
 
@@ -36,12 +43,13 @@ const {
   <body>
     <Nav />
 
-    {showRail && (
-      <div class="rail" id="rail">
-        <a href="#top" data-sec="top"><span class="rdot"></span><span class="rname">Intro</span></a>
-        <a href="#devlog" data-sec="devlog"><span class="rdot"></span><span class="rname">Dev log</span></a>
-        <a href="#writing" data-sec="writing"><span class="rdot"></span><span class="rname">Writing</span></a>
-      </div>
+    {rail.length > 0 && (
+      <nav class="rail" id="rail" aria-label="Table of contents">
+        <span class="rail-title">{railTitle}</span>
+        {rail.map((item) => (
+          <a href={`#${item.id}`} data-sec={item.id}><span class="rdot"></span><span class="rname">{item.label}</span></a>
+        ))}
+      </nav>
     )}
 
     <main>

@@ -1,0 +1,209 @@
+---
+// About page — a single long page with several sections, a left-hand table of
+// contents (the rail, driven by BaseLayout), and home / back-to-top links at
+// the end. All copy lives in the data objects below so you can edit content
+// without touching markup. Replace the placeholder text with your own.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ---- Table of contents: id must match each <section id> below ----
+const toc = [
+  { id: 'intro', label: 'Intro' },
+  { id: 'now', label: 'What I’m doing now' },
+  { id: 'approach', label: 'How I work' },
+  { id: 'skills', label: 'What I work with' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact', label: 'Contact' },
+];
+
+// ---- "What I'm doing now" cards ----
+const nowItems = [
+  {
+    title: 'Building intelligent systems, end to end',
+    body: 'As an AI Master’s student, I design and build small ML-driven tools from data to interface — owning the problem framing, the model, and the experience around it. Right now I’m experimenting with how these systems can stay genuinely useful and human-centered, not just technically impressive.',
+  },
+  {
+    title: 'Bridging design and machine learning',
+    body: 'My background is in Informatics — web, mobile, and design — so I tend to look at AI through a product lens: what does this actually do for a person? I write and share what I learn as I close the gap between the two.',
+  },
+];
+
+// ---- "How I work" principles ----
+const principles = [
+  {
+    title: 'Start from the real problem',
+    body: 'Before building, I try to understand what’s actually being asked — talking to users, questioning assumptions, and reframing the problem until it’s the right one.',
+  },
+  {
+    title: 'Think in structure',
+    body: 'I sketch the flow and the data model before the screens. As more of the work gets automated, this underlying structure matters more than surface detail.',
+  },
+  {
+    title: 'Iterate quickly',
+    body: 'With the boundaries between design, data, and development blurring, I move fast — building, testing, and refining in tight loops.',
+  },
+];
+
+// ---- "What I work with" skill groups ----
+const skillGroups = [
+  {
+    title: 'AI / ML',
+    body: 'Python, PyTorch, scikit-learn, LLM APIs and prompt design, data pipelines, model evaluation, retrieval-augmented generation.',
+  },
+  {
+    title: 'Design / Product',
+    body: 'Figma, user research and interviews, problem framing, UX for web and mobile, turning ambiguous needs into scoped, shippable work.',
+  },
+  {
+    title: 'Engineering',
+    body: 'TypeScript, web and mobile development, working with APIs and databases, comfortable building and deploying small full-stack tools.',
+  },
+  {
+    title: 'Communication',
+    body: 'Translating technical work for non-experts, aligning teams on goals, and writing to think clearly in public.',
+  },
+];
+
+// ---- Experience rows: [period, role, field] ----
+const experience = [
+  { period: '2025 — present', role: 'MSc in Artificial Intelligence', field: 'Coursework, research, and independent ML projects' },
+  { period: '20XX — 20XX', role: 'Company · Your role', field: 'What you worked on' },
+  { period: '20XX — 20XX', role: 'Company · Your role', field: 'What you worked on' },
+  { period: '20XX — 20XX', role: 'BSc / Informatics · Sweden', field: 'Web & mobile development, design foundations' },
+];
+
+const RESUME_URL = '/resume.pdf'; // drop your PDF in /public as resume.pdf
+const EMAIL = 'you@example.com';
+const LINKEDIN = 'https://www.linkedin.com/in/your-handle';
+const GITHUB = 'https://github.com/your-handle';
+---
+
+<BaseLayout title="About — your name" rail={toc} railTitle="Contents">
+  <article class="about">
+
+    <section class="ab-block" id="intro">
+      <p class="eyebrow">About</p>
+      <h1>your name</h1>
+      <p class="lead">AI Master’s student with a designer’s eye and a developer’s hands. A background in Informatics from Sweden — web, mobile, and design — now turned toward machine learning. I build intelligent systems and write about the work along the way.</p>
+      <a class="resume" href={RESUME_URL} target="_blank" rel="noopener">Contact ↗</a>
+    </section>
+
+    <section class="ab-block" id="now">
+      <h2>What I’m doing now</h2>
+      <div class="cards">
+        {nowItems.map((item) => (
+          <div class="card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="ab-block" id="approach">
+      <h2>How I work</h2>
+      <div class="cards">
+        {principles.map((p) => (
+          <div class="card">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="ab-block" id="skills">
+      <h2>What I work with</h2>
+      <div class="skills">
+        {skillGroups.map((g) => (
+          <div class="skill">
+            <h4>{g.title}</h4>
+            <p>{g.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="ab-block" id="experience">
+      <h2>Experience</h2>
+      <div class="exp">
+        {experience.map((row) => (
+          <div class="exp-row">
+            <span class="exp-period">{row.period}</span>
+            <span class="exp-role">{row.role}</span>
+            <span class="exp-field">{row.field}</span>
+          </div>
+        ))}
+      </div>
+      <p class="exp-note">More detail — including earlier work — is on my <a href={LINKEDIN} target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </section>
+
+    <section class="ab-block" id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div class="c-row"><h4>Email</h4><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
+        <div class="c-row"><h4>LinkedIn</h4><a href={LINKEDIN} target="_blank" rel="noopener">linkedin.com/in/your-handle</a></div>
+        <div class="c-row"><h4>GitHub</h4><a href={GITHUB} target="_blank" rel="noopener">github.com/your-handle</a></div>
+      </div>
+    </section>
+
+    <div class="page-end">
+      <a class="end-link" href="/">← Home</a>
+      <a class="end-link" href="#" id="to-top">Back to top ↑</a>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .about { max-width: 760px; margin: 0 auto; padding: 132px clamp(24px, 6vw, 56px) 60px; }
+  .ab-block { padding: clamp(34px, 6vh, 60px) 0; border-top: 1px solid var(--line); }
+  .ab-block:first-child { border-top: none; padding-top: 0; }
+
+  .eyebrow { font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--luxe); font-weight: 600; margin-bottom: 18px; }
+  .about h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.02em; line-height: 1.04; color: var(--luxe); margin-bottom: 22px; }
+  .lead { font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: var(--ink); max-width: 60ch; }
+  .resume { display: inline-block; margin-top: 26px; font-size: 14px; font-weight: 500; color: var(--luxe); border: 1px solid var(--line-strong); border-radius: 100px; padding: 9px 20px; transition: background .25s, color .25s; }
+  .resume:hover { background: var(--luxe); color: var(--white); }
+
+  .about h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.01em; color: var(--luxe); margin-bottom: 28px; }
+
+  .cards { display: flex; flex-direction: column; gap: 26px; }
+  .card h3 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 9px; }
+  .card p { font-size: 15px; line-height: 1.6; color: var(--muted); max-width: 62ch; }
+
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+  .skill h4 { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--luxe); margin-bottom: 10px; }
+  .skill p { font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+
+  .exp { display: flex; flex-direction: column; }
+  .exp-row { display: grid; grid-template-columns: 150px 1fr; gap: 6px 24px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .exp-row:first-child { border-top: none; }
+  .exp-period { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .exp-role { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+  .exp-field { grid-column: 2; font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .exp-note { margin-top: 22px; font-size: 14px; color: var(--muted); }
+  .exp-note a { color: var(--luxe); text-decoration: underline; text-underline-offset: 2px; }
+
+  .contact { display: flex; flex-direction: column; gap: 18px; }
+  .c-row h4 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .c-row a { font-size: 16px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+  .c-row a:hover { color: var(--luxe); }
+
+  .page-end { display: flex; justify-content: space-between; align-items: center; padding-top: 34px; margin-top: 20px; border-top: 1px solid var(--line); }
+  .end-link { font-size: 14px; color: var(--muted); transition: color .2s; }
+  .end-link:hover { color: var(--luxe); }
+
+  @media (max-width: 620px) {
+    .skills { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; }
+    .exp-field { grid-column: 1; }
+  }
+</style>
+
+<script>
+  // Smooth-scroll "Back to top" without jumping the URL hash.
+  document.getElementById('to-top')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
