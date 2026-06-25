@@ -7,13 +7,15 @@
 interface Props {
   label?: string;
   caption?: string;
+  email?: string;
   body?: string;
 }
 
 const {
   label = 'Approach',
   caption = 'MSc in Artificial Intelligence\nBased in Brisbane, Australia',
-  body = "With a foundation in Informatics from Sweden—spanning web and mobile development to design—and currently pursuing a Master's in AI, I look at software through both a user-centric and intelligent lens. I approach problems by balancing clean interfaces, structured logic, and data-driven insights. This space is a record of how I bridge human experience with intelligent systems.",
+  email = 'you@example.com',
+  body = "Informatics in Sweden taught me to build for people; a Master's in AI is teaching me to build with data. This space sits between the two — notes on designing intelligent systems that still feel human.",
 } = Astro.props;
 
 // Split the body into lines for the staggered line-mask reveal.
@@ -23,7 +25,14 @@ const bodyLines = body.match(/.{1,46}(\s|$)/g) ?? [body];
 <header class="hero" id="top">
   <div class="hero-grid">
     <div class="h-label" id="hlabel" aria-label={label}>{label}</div>
-    <div class="h-cap fade-up" data-delay="700" set:html={caption.replace(/\n/g, '<br>')} />
+    <div class="h-cap fade-up" data-delay="700">
+      <div set:html={caption.replace(/\n/g, '<br>')} />
+      {email && (
+        <a class="h-email" href={`mailto:${email}`}>
+          {email}
+        </a>
+      )}
+    </div>
     <div class="h-body" id="hbody">
       {bodyLines.map((line) => (
         <span class="bline"><span>{line.trim()}</span></span>

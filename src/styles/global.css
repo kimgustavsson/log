@@ -128,6 +128,8 @@ a {
   line-height: 0.95;
   color: var(--luxe);
   word-break: keep-all;
+  align-self: end;
+  margin-top: clamp(50px, 7vh, 90px);
 }
 .h-label .ch {
   display: inline-block;
@@ -139,7 +141,34 @@ a {
   line-height: 1.4;
   color: var(--luxe);
   letter-spacing: 0.01em;
-  padding-top: 14px;
+  padding-top: 0;
+  font-style: italic;
+}
+.h-email {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: var(--luxe);
+  margin-top: 14px;
+  opacity: 0.55;
+  position: relative;
+  transition: opacity 0.25s;
+}
+.h-email::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.h-email:hover {
+  opacity: 1;
+}
+.h-email:hover::after {
+  width: 100%;
 }
 .h-body {
   font-family: var(--serif);
