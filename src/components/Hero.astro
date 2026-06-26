@@ -47,7 +47,7 @@ const [mailUser, mailDomain] = email.split('@');
   </div>
 
   <div class="h-meta fade-up" data-delay="300">
-    <div class="blk">
+    <div class="blk blk-name">
       <h4>{name}</h4>
       <div class="v it" set:html={caption.replace(/\n/g, '<br>')} />
     </div>
@@ -167,33 +167,42 @@ const [mailUser, mailDomain] = email.split('@');
 
   @media (max-width: 680px) {
     .hero-inner {
-      padding: 0 20px;
+      padding: 0 45px;
       justify-content: flex-start;
-      padding-top: clamp(84px, 12vh, 112px);
+      padding-top: clamp(72px, 10vh, 100px);
     }
     .h-roles {
-      font-size: 13px;
-      margin-bottom: 18px;
+      font-size: 12px;
+      margin-bottom: 14px;
     }
     .h-head {
-      font-size: clamp(28px, 8vw, 38px);
+      display: block;
+      font-size: clamp(40px, 7vw, 34px);
       line-height: 1.12;
-      margin-bottom: 16px;
+      margin-bottom: 35px;
       max-width: 100%;
     }
     .h-sub {
-      font-size: 15px;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 24px;
       line-height: 1.65;
       max-width: 100%;
     }
     .h-meta {
       grid-template-columns: 1fr;
-      gap: 30px;
-      padding: 30px 20px 0;
+      gap: 24px;
+      padding: 24px 45px 0;
       margin-bottom: 72px;
     }
-    .h-meta .blk h4 { margin-bottom: 10px; }
-    .h-meta .blk .v { font-size: 15px; }
+    .h-meta .blk:not(.blk-name) { display: none; }
+    .h-meta .blk-name h4 {
+      margin-bottom: 10px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .h-meta .blk-name .v { font-size: 15px; line-height: 1.65; }
     .h-scroll { bottom: 18px; }
   }
   @media (prefers-reduced-motion: reduce) {
