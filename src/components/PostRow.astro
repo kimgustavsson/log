@@ -38,7 +38,7 @@ const { href, meta, title, description, tags } = Astro.props;
   .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
   .tag { font-size: 11px; letter-spacing: .03em; color: var(--luxe); border: 1px solid var(--line-strong); padding: 3px 10px; border-radius: 100px; white-space: nowrap; transition: border-color .3s, background .3s, color .3s; }
   .post:hover .tag { border-color: var(--luxe); background: var(--luxe); color: var(--white); }
-  .arrow { font-size: 20px; color: var(--muted); transition: transform .3s, color .3s; padding-top: 3px; }
+  .arrow { font-size: 20px; color: var(--muted); transition: transform .3s, color .3s; padding-top: 0; align-self: center; display: flex; align-items: center; }
   .post:hover .arrow { transform: translateX(5px); color: var(--accent); }
   @media (max-width: 760px) {
     .post { grid-template-columns: 1fr auto; gap: 10px; }
