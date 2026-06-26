@@ -35,5 +35,6 @@
 
   /* Layout */
   --maxw-hero: 1480px; /* wide hero band */
-  --maxw-content: 1040px; /* narrower reading column for lists */
+  --maxw-content: 1040px; /* nav / footer / hero alignment column */
+  --maxw-read: 760px; /* narrow reading column for lists, posts, about */
 }
