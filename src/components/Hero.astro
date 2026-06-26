@@ -1,60 +1,174 @@
 ---
-// Hero section: the "Mission"-style scattered layout with a label, a caption,
-// and a justified body paragraph. The cinematic entrance animation and the
-// hero-only photo trail are wired up in src/scripts (imported by BaseLayout).
+// Hero: left-aligned editorial layout. Small muted role line, a big sans-serif
+// statement headline, a short supporting line, then a 3-column meta block
+// (name / contact / channels) at the bottom. Lines up with the same max-width
+// column as the nav and footer. The scroll cue (up/down arrows) and the page
+// rail are handled elsewhere and untouched here.
 //
-// Props let you reuse this hero with different copy without touching markup.
+// All copy is prop-driven so you can edit without touching markup.
 import MailButton from './MailButton.astro';
 
 interface Props {
-  label?: string;
-  caption?: string;
+  roles?: string[];     // muted keyword line, first one is emphasized
+  headline?: string;    // big statement (this is the focal point)
+  sub?: string;         // small supporting line under the headline
+  name?: string;        // meta column 1 heading
+  caption?: string;     // meta column 1 body (use \n for line breaks)
   email?: string;       // full address; split internally so it's not in the HTML
-  body?: string;
+  linkedin?: string;
+  github?: string;
 }
 const {
-  label = 'Architect',
+  roles = ['AI Engineer', 'Software Developer'],
+  headline = 'This space is an archive of my experiments and everyday problem-solving.',
+  sub = 'It is where I test ideas, hit technical roadblocks, and relentlessly figure out how to make them work.',
+  name = 'My name here',
   caption = 'MSc in Artificial Intelligence\nBased in Brisbane, Australia',
   email = 'you@example.com',
-  body = "Informatics in Sweden taught me to build for people; a Master's in AI is teaching me to build with data. This space sits between the two — notes on designing intelligent systems that still feel human.",
+  linkedin = '#',
+  github = '#',
 } = Astro.props;
 
-// Split the address so the full string never appears in the rendered HTML.
 const [mailUser, mailDomain] = email.split('@');
-
-// Split the body into roughly even lines for the staggered line-mask reveal.
-// We break on word boundaries near a target length so no line is awkwardly
-// short. Adjust `targetLen` to taste (lower = more, shorter lines).
-const targetLen = 30;
-const words = body.split(' ');
-const bodyLines: string[] = [];
-let current = '';
-for (const word of words) {
-  if ((current + ' ' + word).trim().length > targetLen && current) {
-    bodyLines.push(current.trim());
-    current = word;
-  } else {
-    current += ' ' + word;
-  }
-}
-if (current.trim()) bodyLines.push(current.trim());
 ---
 
 <header class="hero" id="top">
-  <div class="hero-grid">
-    <div class="h-left">
-      <div class="h-label" id="hlabel" aria-label={label}>{label}</div>
-      <div class="h-cap fade-up" data-delay="700" set:html={caption.replace(/\n/g, '<br>')} />
-      <MailButton user={mailUser} domain={mailDomain} label="Contact" className="h-email fade-up" delay={850} />
-    </div>
-    <div class="h-body" id="hbody">
-      {bodyLines.map((line) => (
-        <span class="bline"><span>{line.trim()}</span></span>
+  <div class="hero-inner">
+    <div class="h-roles fade-up">
+      {roles.map((r, i) => (
+        <>
+          {i > 0 && <span class="h-sep">·</span>}
+          <span class={i === 0 ? 'on' : ''}>{r}</span>
+        </>
       ))}
+    </div>
+    <h1 class="h-head fade-up" data-delay="100">{headline}</h1>
+    <p class="h-sub fade-up" data-delay="200">{sub}</p>
+  </div>
+
+  <div class="h-meta fade-up" data-delay="300">
+    <div class="blk">
+      <h4>{name}</h4>
+      <div class="v it" set:html={caption.replace(/\n/g, '<br>')} />
+    </div>
+    <div class="blk">
+      <h4>Contact</h4>
+      <div class="v"><MailButton user={mailUser} domain={mailDomain} label="Email" /></div>
+    </div>
+    <div class="blk">
+      <h4>Channels</h4>
+      <div class="v"><a href={linkedin} target="_blank" rel="noopener">LinkedIn</a><br><a href={github} target="_blank" rel="noopener">GitHub</a></div>
     </div>
   </div>
 
-  <div class="hero-foot">
-    <span class="scroll-cue"><span class="bar"></span>Scroll</span>
+  <div class="h-scroll" aria-label="Scroll down">
+    <svg viewBox="0 0 16 11"><path d="M2 9L8 3l6 6" /></svg>
+    <svg viewBox="0 0 16 11"><path d="M2 2l6 6 6-6" /></svg>
   </div>
 </header>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    background: var(--white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* identity + statement, left-aligned in the shared column */
+  .hero-inner {
+    flex: 1;
+    width: 100%;
+    max-width: var(--maxw-content);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 9vw, 140px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .h-roles {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 26px;
+  }
+  .h-roles .on { color: var(--ink, #16161c); }
+  .h-roles .h-sep { margin: 0 12px; opacity: .5; }
+
+  .h-head {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--ink, #16161c);
+    max-width: 17ch;
+    margin-bottom: 28px;
+  }
+
+  .h-sub {
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.5;
+    color: #4a4a52;
+    max-width: 42ch;
+  }
+
+  /* bottom 3-column meta, generous gap before the scroll arrows */
+  .h-meta {
+    width: 100%;
+    max-width: var(--maxw-content);
+    margin: 0 auto clamp(80px, 13vh, 150px);
+    padding: 30px clamp(24px, 9vw, 140px) 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .h-meta .blk h4 {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 30px;
+  }
+  .h-meta .blk .v {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink, #16161c);
+  }
+  .h-meta .blk .v.it { color: var(--ink, #16161c); }
+  .h-meta a { color: var(--ink, #16161c); transition: color .2s; }
+  .h-meta a:hover { color: var(--accent); }
+
+  /* centered scroll arrows — unchanged */
+  .h-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    color: var(--ink, #16161c);
+    opacity: 0.55;
+    animation: hbob 2.4s ease-in-out infinite;
+  }
+  .h-scroll svg { width: 16px; height: 11px; display: block; }
+  .h-scroll path {
+    stroke: currentColor; stroke-width: 1.2; fill: none;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  @keyframes hbob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(4px); }
+  }
+
+  @media (max-width: 680px) {
+    .h-meta { grid-template-columns: 1fr; gap: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .h-scroll { animation: none; }
+  }
+</style>

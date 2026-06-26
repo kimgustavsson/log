@@ -90,6 +90,39 @@ const countLabel = variant === 'number' ? 'Essays & ideas' : `${total} entries`;
 </div>
 
 <style>
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .sec-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--luxe);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .sec-label::before { display: none; }
+  .head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .head-row h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(24px, 3vw, 34px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--luxe);
+  }
+  .head-row .count {
+    font-size: 14px;
+    color: var(--muted);
+  }
   .list { margin-top: 30px; }
   .view-all { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-size: 14px; font-weight: 500; color: var(--luxe); transition: gap .25s; }
   .view-all:hover { gap: 14px; }

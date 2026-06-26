@@ -2,16 +2,16 @@
 // Top navigation. Fixed, turns opaque on scroll, collapses to a toggle on mobile.
 // Links are passed in so the same bar works on any page.
 const links = [
-  { label: 'Dev Log', href: '/devlog' },
-  { label: 'Writing', href: '/writing' },
-    { label: 'About', href: '/about' },
-  { label: 'Linkedin', href: 'https://www.linkedin.com/', external: true },
+  { label: 'dev log', href: '/devlog' },
+  { label: 'writing', href: '/writing' },
+  { label: 'about', href: '/about' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/', external: true },
 ];
 ---
 
 <nav id="nav">
   <div class="nav-inner">
-    <a class="logo" href="/"> Kim Dasha Gustavsson</a>
+    <a class="logo" href="/"><span class="dot"></span></a>
     <button class="menu-toggle" id="mtoggle" aria-label="Toggle menu">Menu</button>
     <div class="nav-links" id="navlinks">
       {links.map((l) =>
@@ -26,13 +26,8 @@ const links = [
 </nav>
 
 <style>
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 22px clamp(20px, 5vw, 56px); transition: background .4s ease, border-color .4s ease; border-bottom: 1px solid transparent; }
-  nav.scrolled { 
-    background: rgba(255, 255, 255, 0.6);
-    -webkit-backdrop-filter: blur(12px); 
-    backdrop-filter: blur(12px); 
-    border-bottom: 1px solid var(--line); 
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 48px clamp(20px, 5vw, 56px) 22px; transition: background .4s ease, border-color .4s ease, padding .4s ease; border-bottom: 1px solid transparent; }
+  nav.scrolled { background: rgba(255, 255, 255, .9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding-top: 18px; padding-bottom: 18px; }
   .nav-inner { max-width: var(--maxw-content); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
   .logo { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -.01em; display: flex; align-items: center; gap: 9px; color: var(--luxe); }
   .logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--luxe); display: inline-block; }
