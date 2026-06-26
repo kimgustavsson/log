@@ -6,14 +6,26 @@ import PostLayout from '../../layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('writing', ({ data }) => !data.draft);
-  return entries.map((entry) => ({
+  const sorted = entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return sorted.map((entry, i) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: {
+      entry,
+      prev: sorted[i + 1]
+        ? { href: `/writing/${sorted[i + 1].id}/`, title: sorted[i + 1].data.title }
+        : null,
+      next: sorted[i - 1]
+        ? { href: `/writing/${sorted[i - 1].id}/`, title: sorted[i - 1].data.title }
+        : null,
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
+
+const words = entry.body.trim().split(/\s+/).length;
+const readingTime = Math.max(1, Math.round(words / 200));
 ---
 
 <PostLayout
@@ -23,6 +35,10 @@ const { Content } = await render(entry);
   tags={entry.data.tags}
   slug={`writing/${entry.id}`}
   section="Writing"
+  basePath="/writing"
+  readingTime={readingTime}
+  prev={prev}
+  next={next}
 >
   <Content />
 </PostLayout>

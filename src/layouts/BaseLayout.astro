@@ -10,7 +10,6 @@ interface RailItem {
   id: string;     // section id on the page (without #)
   label: string;  // visible label in the table of contents
 }
-
 interface Props {
   title?: string;
   description?: string;
@@ -19,10 +18,9 @@ interface Props {
   /** Heading shown above the rail (e.g. "Contents"). */
   railTitle?: string;
 }
-
 const {
-  title = 'Logbook',
-  description = 'Working notes on artificial intelligence, software development, and the process of building intelligent systems.',
+  title = 'your name — dev log & writing',
+  description = 'Notes on building software — a dev log and longer writing.',
   rail = [],
   railTitle = 'Contents',
 } = Astro.props;
@@ -35,6 +33,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="alternate" type="application/rss+xml" title="your name — dev log & writing" href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

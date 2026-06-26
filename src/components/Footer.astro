@@ -2,14 +2,15 @@
 // Minimal footer: copyright on the left, a couple of links on the right.
 const year = new Date().getFullYear();
 const links = [
-  { label: 'Linkedin', href: 'www.linkedin.com/in/ki-d-gu' },
-  { label: 'Github', href: 'https://github.com/kimgustavsson' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/' },
+  { label: 'github', href: 'https://github.com/' },
+  { label: 'rss', href: '/rss.xml' },
 ];
 ---
 
 <footer>
   <div class="foot-min">
-    <span>© {year} Kim Dasha Gustavsson</span>
+    <span>© {year} your name</span>
     <span class="links">
       {links.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
     </span>
