@@ -4,6 +4,7 @@
 // the end. All copy lives in the data objects below so you can edit content
 // without touching markup. Replace the placeholder text with your own.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MailButton from '../components/MailButton.astro';
 
 // ---- Table of contents: id must match each <section id> below ----
 const toc = [
@@ -17,7 +18,7 @@ const toc = [
 
 // ---- "What I'm doing now" cards ----
 const nowItems = [
-{
+  {
     title: 'A 5-phase wearable AI roadmap',
     body: 'I’m working through a step-by-step research project using sensor data, scaling from basic fall detection to predicting panic attacks. Right now, I’m in Phase 1: running an end-to-end ML pipeline with IMU data. I’m testing different form factors (like using my smartphone to collect data) to answer a specific question: Can we accurately detect abnormal movements from a low-stigma placement, like a necklace, rather than a bulky medical device?',
   },
@@ -49,16 +50,16 @@ const principles = [
 
 // ---- "What I work with" skill groups ----
 const skillGroups = [
-{
-    title: 'AI / Machine Learning',
-    body: 'Python, Pandas, Scikit-learn. End-to-end ML pipelines, time-series data processing (IMU sensors), edge deployment (ONNX), and practical LLM integrations.',
+  {
+    title: 'AI / ML',
+    body: 'Python, PyTorch, scikit-learn. End-to-end ML pipelines, time-series data processing (IMU sensors), edge deployment (ONNX), and practical LLM integrations.',
   },
   {
-    title: 'Software Engineering',
+    title: 'Engineering',
     body: 'TypeScript, React, React Native, and Node.js. Building responsive web interfaces, cross-platform mobile apps, API integrations, and functional full-stack prototypes—backed by databases (SQL/NoSQL) and scalable architectures like Docker and microservices.',
   },
-{
-    title: 'Product Design',
+  {
+    title: 'Design / Product',
     body: 'Figma, user research, and p5.js (creative coding). Focused on translating complex backend logic and ambiguous user needs into scoped, human-centered interfaces.',
   },
   {
@@ -70,23 +71,24 @@ const skillGroups = [
 // ---- Experience rows: [period, role, field] ----
 const experience = [
   { period: '2026 — present', role: 'MSc in Artificial Intelligence', field: 'Coursework, research, and independent ML projects' },
-  { period: '2023 — 2026', role: 'BSc / Informatics · Sweden', field: 'Software development, design foundations' },
+  { period: '2023 — 2026', role: 'BA in Artificial Intelligence', field: 'Web & mobile development, design foundations' },
 ];
 
-const EMAIL = 'dashagustavsson@gmail.com';
-const LINKEDIN = 'http://www.linkedin.com/in/ki-d-gu';
-const GITHUB = 'https://github.com/kimgustavsson';
+const RESUME_URL = '/resume.pdf'; // drop your PDF in /public as resume.pdf
+const EMAIL = 'you@example.com';
+const [MAIL_USER, MAIL_DOMAIN] = EMAIL.split('@');
+const LINKEDIN = 'https://www.linkedin.com/in/your-handle';
+const GITHUB = 'https://github.com/your-handle';
 ---
 
-<BaseLayout title="About — Kim Dasha Gustavsson" rail={toc} railTitle="Contents">
+<BaseLayout title="About — your name" rail={toc} railTitle="Contents">
   <article class="about">
 
     <section class="ab-block" id="intro">
       <p class="eyebrow">About</p>
-      <h1>Kim Dasha Gustavsson</h1>
-      <p class="lead">From studying Informatics in Sweden to pursuing a Master's in AI in Australia, I approach Artificial Intelligence as a builder.
-This space is an archive of my experiments and iterations. It is where I test ideas, hit technical roadblocks, and relentlessly figure out how to make them work.</p>
-      <a class="resume" href={`mailto:${EMAIL}`} rel="noopener">Contact ↗</a>
+      <h1>your name</h1>
+      <p class="lead">This space is an archive of my experiments and everyday problem-solving. It is where I test ideas, hit technical roadblocks, and relentlessly figure out how to make them work.</p>
+      <a class="resume" href={`mailto:${EMAIL}`}>Contact →</a>
     </section>
 
     <section class="ab-block" id="now">
@@ -142,9 +144,9 @@ This space is an archive of my experiments and iterations. It is where I test id
     <section class="ab-block" id="contact">
       <h2>Contact</h2>
       <div class="contact">
-        <div class="c-row"><h4>Email</h4><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
-        <div class="c-row"><h4>LinkedIn</h4><a href={LINKEDIN} target="_blank" rel="noopener">linkedin.com/in/ki-d-gu</a></div>
-        <div class="c-row"><h4>GitHub</h4><a href={GITHUB} target="_blank" rel="noopener">github.com/kimgustavsson</a></div>
+        <div class="c-row"><h4>Email</h4><MailButton user={MAIL_USER} domain={MAIL_DOMAIN} label="Email me →" /></div>
+        <div class="c-row"><h4>LinkedIn</h4><a href={LINKEDIN} target="_blank" rel="noopener">linkedin.com/in/your-handle</a></div>
+        <div class="c-row"><h4>GitHub</h4><a href={GITHUB} target="_blank" rel="noopener">github.com/your-handle</a></div>
       </div>
     </section>
 

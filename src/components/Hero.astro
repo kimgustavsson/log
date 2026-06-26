@@ -4,34 +4,48 @@
 // hero-only photo trail are wired up in src/scripts (imported by BaseLayout).
 //
 // Props let you reuse this hero with different copy without touching markup.
+import MailButton from './MailButton.astro';
+
 interface Props {
   label?: string;
   caption?: string;
-  email?: string;
+  email?: string;       // full address; split internally so it's not in the HTML
   body?: string;
 }
-
 const {
-  label = 'Approach',
+  label = 'Architect',
   caption = 'MSc in Artificial Intelligence\nBased in Brisbane, Australia',
-  email = 'dashagustavsson@gmail.com',
+  email = 'you@example.com',
   body = "Informatics in Sweden taught me to build for people; a Master's in AI is teaching me to build with data. This space sits between the two — notes on designing intelligent systems that still feel human.",
 } = Astro.props;
 
-// Split the body into lines for the staggered line-mask reveal.
-const bodyLines = body.match(/.{1,46}(\s|$)/g) ?? [body];
+// Split the address so the full string never appears in the rendered HTML.
+const [mailUser, mailDomain] = email.split('@');
+
+// Split the body into roughly even lines for the staggered line-mask reveal.
+// We break on word boundaries near a target length so no line is awkwardly
+// short. Adjust `targetLen` to taste (lower = more, shorter lines).
+const targetLen = 30;
+const words = body.split(' ');
+const bodyLines: string[] = [];
+let current = '';
+for (const word of words) {
+  if ((current + ' ' + word).trim().length > targetLen && current) {
+    bodyLines.push(current.trim());
+    current = word;
+  } else {
+    current += ' ' + word;
+  }
+}
+if (current.trim()) bodyLines.push(current.trim());
 ---
 
 <header class="hero" id="top">
   <div class="hero-grid">
-    <div class="h-label" id="hlabel" aria-label={label}>{label}</div>
-    <div class="h-cap fade-up" data-delay="700">
-      <div set:html={caption.replace(/\n/g, '<br>')} />
-      {email && (
-        <a class="h-email" href={`mailto:${email}`}>
-          {email}
-        </a>
-      )}
+    <div class="h-left">
+      <div class="h-label" id="hlabel" aria-label={label}>{label}</div>
+      <div class="h-cap fade-up" data-delay="700" set:html={caption.replace(/\n/g, '<br>')} />
+      <MailButton user={mailUser} domain={mailDomain} label="Contact" className="h-email fade-up" delay={850} />
     </div>
     <div class="h-body" id="hbody">
       {bodyLines.map((line) => (
