@@ -183,18 +183,18 @@ const [mailUser, mailDomain] = email.split('@');
     width: 100%;
     max-width: var(--maxw-content);
     margin: 0 auto clamp(80px, 13vh, 150px);
-    padding: 30px clamp(24px, 9vw, 140px) 0;
+    padding: 30px clamp(24px, 9vw, 140px) 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  /* a centered rule matching the width of dividers used elsewhere on the
-     site (var(--maxw-read)), instead of a full-width border that stretches
-     to the wider hero column and reads as a much longer line */
-  .h-meta::before {
+  /* matching centered rules above and below the meta content, both sized to
+     the width of dividers used elsewhere on the site (var(--maxw-read))
+     instead of a full-width border that stretches to the wider hero column */
+  .h-meta::before,
+  .h-meta::after {
     content: "";
     position: absolute;
-    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: var(--maxw-read);
@@ -202,6 +202,8 @@ const [mailUser, mailDomain] = email.split('@');
     height: 1px;
     background: var(--line);
   }
+  .h-meta::before { top: 0; }
+  .h-meta::after { bottom: 0; }
   .h-meta .blk h4 {
     font-size: 13px;
     font-weight: 400;
@@ -246,7 +248,7 @@ const [mailUser, mailDomain] = email.split('@');
     .h-meta {
       grid-template-columns: 1fr;
       gap: 24px;
-      padding: 24px 45px 0;
+      padding: 24px 45px;
       margin-bottom: 72px;
     }
     .h-meta .blk:not(.blk-name) { display: none; }
