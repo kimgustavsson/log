@@ -22,7 +22,7 @@
      Much of the codebase references --luxe, --seafoam, --grey-blue. We map
      those names onto the new palette instead of renaming everywhere. */
   --luxe: #1f4a63; /* calm deep blue — headings, links, active states */
-  --seafoam: #fbfaf2; /* warm cream near-white section background */
+  --seafoam: #faf9f6; /* warm cream near-white section background */
   --grey-blue: #c0c5db; /* muted alt surface */
   --muted: #6a7785; /* secondary text */
 

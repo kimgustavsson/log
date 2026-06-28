@@ -161,7 +161,9 @@ const GITHUB = 'https://github.com/your-handle';
 </BaseLayout>
 
 <style>
-  .about { padding: 132px clamp(24px, 6vw, 56px) 60px; }
+  /* About keeps the plain white canvas (excluded from the site-wide cream
+     background) — a flat neutral works better for this much reading text */
+  .about { background: var(--white); padding: 132px clamp(24px, 6vw, 56px) 60px; }
   .about .wrap { max-width: 760px; margin: 0 auto; }
   .ab-block { padding: clamp(34px, 6vh, 60px) 0; border-top: 1px solid var(--line); }
   .ab-block:first-child { border-top: none; padding-top: 0; }
