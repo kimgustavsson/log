@@ -33,7 +33,6 @@ const [mailUser, mailDomain] = email.split('@');
 ---
 
 <header class="hero" id="top">
-  <div class="h-spotlight" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="h-roles">
       <span class="roles-text">
@@ -46,7 +45,10 @@ const [mailUser, mailDomain] = email.split('@');
       </span>
       <span class="r-line" aria-hidden="true"></span>
     </div>
-    <h1 class="h-head">{headline}</h1>
+    <div class="h-head-wrap">
+      <h1 class="h-head">{headline}</h1>
+      <h1 class="h-head h-head-fill" aria-hidden="true">{headline}</h1>
+    </div>
     <p class="h-sub fade-up" data-delay="200">{sub}</p>
   </div>
 
@@ -75,21 +77,6 @@ const [mailUser, mailDomain] = email.split('@');
     display: flex;
     flex-direction: column;
   }
-
-  /* soft light that follows the cursor across the hero */
-  .h-spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .4s ease;
-    background: radial-gradient(
-      460px circle at var(--mx, 50%) var(--my, 40%),
-      rgba(80, 138, 168, 0.16),
-      transparent 70%
-    );
-  }
-  .h-spotlight.active { opacity: 1; }
 
   /* identity + statement, left-aligned in the shared column */
   .hero-inner {
@@ -145,18 +132,18 @@ const [mailUser, mailDomain] = email.split('@');
 
   /* :global because these spans are inserted client-side by reveal.ts and
      don't carry Astro's scoped data-astro-cid attribute */
-  :global(.h-roles .letter),
-  :global(.h-head .letter) {
+  :global(.h-roles .letter) {
     display: inline-block;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity .5s ease, transform .5s cubic-bezier(.16, 1, .3, 1);
   }
-  :global(.h-roles .letter.in),
-  :global(.h-head .letter.in) {
+  :global(.h-roles .letter.in) {
     opacity: 1;
     transform: none;
   }
+
+  .h-head-wrap { position: relative; }
 
   .h-head {
     font-family: var(--sans);
@@ -168,6 +155,19 @@ const [mailUser, mailDomain] = email.split('@');
     max-width: 17ch;
     margin-bottom: 20px;
     overflow-wrap: break-word;
+  }
+
+  /* cursor-following circle that recolors the headline as it passes over —
+     an absolutely-positioned duplicate of the headline, clipped to a circle
+     that JS moves to the cursor, sitting on top of the normal-colored text */
+  .h-head-fill {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    color: var(--accent);
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+    transition: clip-path .15s ease-out;
   }
 
   .h-sub {
@@ -259,10 +259,9 @@ const [mailUser, mailDomain] = email.split('@');
     .h-meta .blk-name .v { font-size: 15px; line-height: 1.65; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .h-spotlight { display: none; }
+    .h-head-fill { display: none; }
     .h-roles .r-line { display: none; }
-    :global(.h-roles .letter),
-    :global(.h-head .letter) {
+    :global(.h-roles .letter) {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;

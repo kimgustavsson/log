@@ -1,7 +1,7 @@
 // Entrance + scroll-reveal animations.
 // - Splits the hero label into characters for a staggered drop.
 // - Draws a sweeping line ahead of the hero roles, then cascades their letters in.
-// - Cascades the hero headline's letters in.
+// - Runs a cursor-following circle that recolors the headline as it passes over.
 // - Reveals hero body lines and captions on load.
 // - Reveals .fade-up elements as they scroll into view.
 // Respects prefers-reduced-motion (the CSS already disables transforms there).
@@ -51,17 +51,24 @@ function splitLetters(root: HTMLElement, stepMs: number, baseDelayMs = 0): numbe
 export function initReveal(): void {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Soft light that follows the cursor across the hero.
+  // Cursor-following circle that recolors the headline as it passes over it.
+  // `.h-head-fill` is an absolutely-positioned duplicate of the headline,
+  // clipped to a circle centered on the cursor, sitting on top of the
+  // normally-colored text underneath.
   const hero = document.querySelector<HTMLElement>('.hero');
-  const spotlight = document.querySelector<HTMLElement>('.h-spotlight');
-  if (hero && spotlight && !reduce) {
+  const headWrap = document.querySelector<HTMLElement>('.h-head-wrap');
+  const headFill = document.querySelector<HTMLElement>('.h-head-fill');
+  if (hero && headWrap && headFill && !reduce) {
+    const RADIUS = 90;
     hero.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      spotlight.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
-      spotlight.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
-      spotlight.classList.add('active');
+      const rect = headWrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      headFill.style.clipPath = `circle(${RADIUS}px at ${x}px ${y}px)`;
     });
-    hero.addEventListener('mouseleave', () => spotlight.classList.remove('active'));
+    hero.addEventListener('mouseleave', () => {
+      headFill.style.clipPath = 'circle(0px at 50% 50%)';
+    });
   }
 
   // Split the hero label ("Mission") into per-character spans so each letter
@@ -97,7 +104,6 @@ export function initReveal(): void {
     if (!reduce) {
       const growMs = 450; // time for the line to grow in place before it sweeps
       const step = 38; // ms between each letter starting to fade in
-      let rolesEndMs = growMs;
 
       // Roles line: a thin rule grows in place, then sweeps across the role
       // text at the same pace the letters cascade in, so the bar's tip stays
@@ -118,16 +124,6 @@ export function initReveal(): void {
         setTimeout(() => rLine.classList.add('in-sweep'), growMs);
         // Fade the bar out once every letter has fully appeared.
         setTimeout(() => rLine.classList.add('out'), lastLetterDoneMs + 150);
-        rolesEndMs = growMs + sweepMs;
-      }
-
-      // Headline: letters cascade in once the roles line has settled.
-      const headline = document.querySelector<HTMLElement>('.h-head');
-      if (headline) {
-        splitLetters(headline, 12, rolesEndMs + 150);
-        requestAnimationFrame(() => {
-          headline.querySelectorAll<HTMLElement>('.letter').forEach((l) => l.classList.add('in'));
-        });
       }
     }
   };
