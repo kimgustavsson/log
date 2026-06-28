@@ -32,7 +32,6 @@ const writingPosts = await loadPosts('writing');
     <PostList
       id="devlog"
       label="Dev log"
-      heading="Recent entries"
       basePath="/devlog"
       variant="date"
       posts={devlogPosts}
@@ -43,7 +42,6 @@ const writingPosts = await loadPosts('writing');
     <PostList
       id="writing"
       label="Writing"
-      heading="Longer thoughts"
       basePath="/writing"
       variant="number"
       posts={writingPosts}
