@@ -7,6 +7,8 @@ tags: ["infra", "llm", "python"]
 
 I'd been paying for a hosted embedding API longer than I should have. This post walks through moving the whole pipeline local.
 
+![A local inference setup running on a laptop](https://picsum.photos/800/450)
+
 ## Why bother
 
 The hosted API was fine until traffic spiked. Latency became unpredictable, and every request was a network round-trip I didn't control.

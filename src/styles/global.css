@@ -88,7 +88,11 @@ section.block { padding: clamp(56px, 8vh, 92px) clamp(24px, 6vw, 56px); }
 .head-row h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 4.5vw, 50px); letter-spacing: -.025em; line-height: 1; color: var(--luxe); }
 .head-row .count { font-size: 14px; color: var(--muted); }
 
-/* ----- Cursor glow: a soft white circle that trails the mouse (cursor-glow.ts) ----- */
+/* ----- Cursor glow: a soft accent-colored circle that trails the mouse
+   (cursor-glow.ts). A white "screen" glow is nearly invisible on a light
+   page — screen can't push near-white pixels any brighter. A tinted accent
+   glow on "multiply" darkens/tints reliably no matter how light the
+   background is, and it ties to the one color the site actually uses. */
 .cursor-glow {
   position: fixed;
   top: 0;
@@ -97,9 +101,9 @@ section.block { padding: clamp(56px, 8vh, 92px) clamp(24px, 6vw, 56px); }
   height: 360px;
   margin: -180px 0 0 -180px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, .45), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%);
   filter: blur(15px);
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 5;
   opacity: 0;

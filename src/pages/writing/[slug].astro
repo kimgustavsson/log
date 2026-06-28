@@ -1,31 +1,17 @@
 ---
 // Dynamic route for writing posts. Mirrors the dev log route — same pattern,
 // different collection — so both sections stay consistent.
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
+import { buildPostPaths, estimateReadingTime } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('writing', ({ data }) => !data.draft);
-  const sorted = entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-  return sorted.map((entry, i) => ({
-    params: { slug: entry.id },
-    props: {
-      entry,
-      prev: sorted[i + 1]
-        ? { href: `/writing/${sorted[i + 1].id}/`, title: sorted[i + 1].data.title }
-        : null,
-      next: sorted[i - 1]
-        ? { href: `/writing/${sorted[i - 1].id}/`, title: sorted[i - 1].data.title }
-        : null,
-    },
-  }));
+  return buildPostPaths('writing', '/writing');
 }
 
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
-
-const words = entry.body.trim().split(/\s+/).length;
-const readingTime = Math.max(1, Math.round(words / 200));
+const readingTime = estimateReadingTime(entry.body);
 ---
 
 <PostLayout
