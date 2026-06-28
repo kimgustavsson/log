@@ -3,36 +3,30 @@
    Change a value here and it updates everywhere. Never hardcode these
    values in component files; always reference var(--token-name).
 
-   Palette: a warm cream section background, deep navy (--luxe) for headings
-   and structural accents, and Brick Ember (red) as a sparing punchy accent
-   on hover/emphasis — the combination first seen on the Writing list's row
-   hover, now used as the site's overall theme.
+   Palette: monotone (no hue anywhere) so the typography hierarchy reads
+   purely through lightness/weight — headings darkest (--luxe), body text a
+   step lighter (--ink), secondary/meta text lighter still (--muted), all on
+   a neutral near-white page (--seafoam). Brick Ember (--accent) stays the
+   one deliberate point of color, untouched here on purpose.
    ========================================================================== */
 :root {
   /* Core palette */
   --accent: #ba1200; /* Brick Ember — rare punchy accent (hover, emphasis) */
   --accent-deep: #8f0e00; /* darker red for hover-on-red if needed */
-  --ink: #031927; /* Ink Black — primary text */
-  --air: #508aa8; /* Air Force Blue — calm primary accent (links, labels) */
-  --baby: #9dd1f1; /* Baby Blue — light accent */
-  --sky: #c8e0f4; /* Pale Sky — very light accent / section tint */
-  --white: #ffffff;
+  --white: #ffffff; /* literal white — text on --accent fills */
 
-  /* Semantic aliases (so existing component CSS keeps working) ---------------
-     Much of the codebase references --luxe, --seafoam, --grey-blue. We map
-     those names onto the new palette instead of renaming everywhere. */
-  --luxe: #556035; /* olive green — headings, links, active states */
-  --seafoam: #faf9f6; /* warm cream near-white section background */
-  --seafoam-deep: #f3f1ec; /* a touch darker than --seafoam — tag pills, so not everything leans on --luxe */
-  --grey-blue: #c0c5db; /* muted alt surface */
-  --muted: #6a7785; /* secondary text */
-  --pine: #0d2b26; /* near-black pine green — nav links/toggle, hero headline */
-  --code-bg: #0e1f4d; /* dark navy — code block background in post bodies */
-  --code-text: #f2f1df; /* pale cream — code block text in post bodies */
+  /* Monotone hierarchy — darkest to lightest */
+  --luxe: #121212; /* near-black — headings, links, active states (most emphasis) */
+  --ink: #2e2e2e; /* dark gray — primary body text */
+  --muted: #757575; /* medium gray — secondary/meta text (least emphasis) */
+  --seafoam: #f7f7f7; /* neutral near-white — page/section background */
+  --seafoam-deep: #ececec; /* a step darker than --seafoam — tag pills, inline code, raised surfaces */
+  --code-bg: #1a1a1a; /* near-black — code block background in post bodies */
+  --code-text: #f0f0f0; /* near-white — code block text in post bodies */
 
-  /* Derived line colors */
-  --line: rgba(3, 25, 39, 0.12);
-  --line-strong: rgba(3, 25, 39, 0.26);
+  /* Derived line colors — a faint, neutral version of --luxe */
+  --line: rgba(18, 18, 18, 0.12);
+  --line-strong: rgba(18, 18, 18, 0.26);
 
   /* Typography */
   --serif: "Playfair Display", Georgia, serif;
