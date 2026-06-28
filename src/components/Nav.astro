@@ -40,11 +40,11 @@ const social = [
      and drift as the page scrolls. Drop it while the menu is open. */
   nav.scrolled.menu-open { backdrop-filter: none; }
   .nav-inner { max-width: var(--maxw-content); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -.01em; display: flex; align-items: center; gap: 9px; color: var(--luxe); }
+  .logo { font-family: var(--sans); font-weight: 500; font-size: 16px; display: flex; align-items: center; gap: 9px; color: var(--luxe); }
   .nav-links { display: flex; gap: clamp(18px, 2.4vw, 34px); font-size: 14px; letter-spacing: .01em; }
   .nl-group { display: contents; }
-  .nav-links a { padding: 3px 0; color: var(--pine); transition: color .25s; }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a { padding: 3px 0; color: var(--pine); opacity: .65; transition: color .25s, opacity .25s; }
+  .nav-links a:hover { color: var(--accent); opacity: 1; }
   .menu-toggle { display: none; align-items: center; background: none; border: none; color: var(--pine); cursor: pointer; }
   .mt-bars { display: flex; flex-direction: column; gap: 5px; }
   .mt-bars span { display: block; width: 20px; height: 2px; background: currentColor; }
