@@ -3,9 +3,10 @@
    Change a value here and it updates everywhere. Never hardcode these
    values in component files; always reference var(--token-name).
 
-   Palette: Brick Ember (red) as a sparing accent, an ink-navy for text, and
-   a family of blues (Air Force / Baby / Pale Sky) for accents and section
-   backgrounds. Red is intentionally rare so it stays punchy.
+   Palette: a warm cream section background, deep navy (--luxe) for headings
+   and structural accents, and Brick Ember (red) as a sparing punchy accent
+   on hover/emphasis — the combination first seen on the Writing list's row
+   hover, now used as the site's overall theme.
    ========================================================================== */
 :root {
   /* Core palette */
@@ -21,7 +22,7 @@
      Much of the codebase references --luxe, --seafoam, --grey-blue. We map
      those names onto the new palette instead of renaming everywhere. */
   --luxe: #1f4a63; /* calm deep blue — headings, links, active states */
-  --seafoam: #eef5fb; /* Pale-Sky-tinted near-white section background */
+  --seafoam: #fbfaf2; /* warm cream near-white section background */
   --grey-blue: #c0c5db; /* muted alt surface */
   --muted: #6a7785; /* secondary text */
 
