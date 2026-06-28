@@ -21,10 +21,14 @@
   /* Semantic aliases (so existing component CSS keeps working) ---------------
      Much of the codebase references --luxe, --seafoam, --grey-blue. We map
      those names onto the new palette instead of renaming everywhere. */
-  --luxe: #1f4a63; /* calm deep blue — headings, links, active states */
+  --luxe: #556035; /* olive green — headings, links, active states */
   --seafoam: #faf9f6; /* warm cream near-white section background */
+  --seafoam-deep: #f3f1ec; /* a touch darker than --seafoam — tag pills, so not everything leans on --luxe */
   --grey-blue: #c0c5db; /* muted alt surface */
   --muted: #6a7785; /* secondary text */
+  --pine: #0d2b26; /* near-black pine green — nav links/toggle, hero headline */
+  --code-bg: #0e1f4d; /* dark navy — code block background in post bodies */
+  --code-text: #f2f1df; /* pale cream — code block text in post bodies */
 
   /* Derived line colors */
   --line: rgba(3, 25, 39, 0.12);

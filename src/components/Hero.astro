@@ -22,7 +22,7 @@ const {
   roles = ['AI Engineer', 'Software Developer'],
   headline = 'This space is an archive of my experiments and everyday problem-solving.',
   sub = 'It is where I test ideas, hit technical roadblocks, and relentlessly figure out how to make them work.',
-  name = 'My name here',
+  name = 'NOW',
   caption = 'MSc in Artificial Intelligence\nBased in Brisbane, Australia',
   email = 'you@example.com',
   linkedin = '#',
@@ -98,7 +98,7 @@ const [mailUser, mailDomain] = email.split('@');
     text-transform: uppercase;
     letter-spacing: 1.98px;
   }
-  .h-roles .on { color: var(--ink, #16161c); }
+  .h-roles .on { color: var(--ink); }
   .h-roles .h-sep { margin: 0 12px; opacity: .5; }
 
   /* sweeping line drawn ahead of the role letters on load */
@@ -108,7 +108,7 @@ const [mailUser, mailDomain] = email.split('@');
     top: 0;
     height: 100%;
     width: 2px;
-    background: var(--ink, #16161c);
+    background: var(--ink);
     opacity: 0;
     transform: scaleY(0) translateX(0);
     transform-origin: 0 50%;
@@ -151,7 +151,7 @@ const [mailUser, mailDomain] = email.split('@');
     font-size: clamp(30px, 5vw, 60px);
     line-height: 1.08;
     letter-spacing: -0.02em;
-    color: #0D2B26;
+    color: var(--pine);
     max-width: 17ch;
     margin-bottom: 20px;
     overflow-wrap: break-word;
@@ -215,10 +215,10 @@ const [mailUser, mailDomain] = email.split('@');
   .h-meta .blk .v {
     font-size: 14px;
     line-height: 1.55;
-    color: var(--ink, #16161c);
+    color: var(--ink);
   }
-  .h-meta .blk .v.it { color: var(--ink, #16161c); }
-  .h-meta a { color: var(--ink, #16161c); transition: color .2s; }
+  .h-meta .blk .v.it { color: var(--ink); }
+  .h-meta a { color: var(--ink); transition: color .2s; }
   .h-meta a:hover { color: var(--accent); }
 
   @media (max-width: 680px) {
