@@ -9,7 +9,7 @@
 html { scroll-behavior: smooth; }
 body {
   background: var(--white);
-  color: var(--luxe);
+  color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
