@@ -2,8 +2,8 @@
 // Hero: left-aligned editorial layout. Small muted role line, a big sans-serif
 // statement headline, a short supporting line, then a 3-column meta block
 // (name / contact / channels) at the bottom. Lines up with the same max-width
-// column as the nav and footer. The scroll cue (up/down arrows) and the page
-// rail are handled elsewhere and untouched here.
+// column as the nav and footer. The page rail is handled elsewhere and
+// untouched here.
 //
 // All copy is prop-driven so you can edit without touching markup.
 import MailButton from './MailButton.astro';
@@ -64,11 +64,6 @@ const [mailUser, mailDomain] = email.split('@');
       <div class="v"><a href={linkedin} target="_blank" rel="noopener">LinkedIn</a><br><a href={github} target="_blank" rel="noopener">GitHub</a></div>
     </div>
   </div>
-
-  <div class="h-scroll" aria-label="Scroll down">
-    <svg viewBox="0 0 16 11"><path d="M2 9L8 3l6 6" /></svg>
-    <svg viewBox="0 0 16 11"><path d="M2 2l6 6 6-6" /></svg>
-  </div>
 </header>
 
 <style>
@@ -110,9 +105,11 @@ const [mailUser, mailDomain] = email.split('@');
 
   .h-roles {
     position: relative;
-    font-size: 15px;
+    font-size: 13px;
     color: var(--muted);
     margin-bottom: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1.98px;
   }
   .h-roles .on { color: var(--ink, #16161c); }
   .h-roles .h-sep { margin: 0 12px; opacity: .5; }
@@ -167,7 +164,7 @@ const [mailUser, mailDomain] = email.split('@');
     font-size: clamp(30px, 5vw, 60px);
     line-height: 1.08;
     letter-spacing: -0.025em;
-    color: var(--ink, #16161c);
+    color: #0D2B26;
     max-width: 17ch;
     margin-bottom: 20px;
     overflow-wrap: break-word;
@@ -180,8 +177,9 @@ const [mailUser, mailDomain] = email.split('@');
     max-width: 42ch;
   }
 
-  /* bottom 3-column meta, generous gap before the scroll arrows */
+  /* bottom 3-column meta, generous gap before the page end */
   .h-meta {
+    position: relative;
     width: 100%;
     max-width: var(--maxw-content);
     margin: 0 auto clamp(80px, 13vh, 150px);
@@ -189,13 +187,28 @@ const [mailUser, mailDomain] = email.split('@');
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    border-top: 1px solid var(--line);
+  }
+  /* a centered rule matching the width of dividers used elsewhere on the
+     site (var(--maxw-read)), instead of a full-width border that stretches
+     to the wider hero column and reads as a much longer line */
+  .h-meta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--maxw-read);
+    max-width: 100%;
+    height: 1px;
+    background: var(--line);
   }
   .h-meta .blk h4 {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
     color: var(--muted);
     margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.98px;
   }
   .h-meta .blk .v {
     font-size: 14px;
@@ -205,30 +218,6 @@ const [mailUser, mailDomain] = email.split('@');
   .h-meta .blk .v.it { color: var(--ink, #16161c); }
   .h-meta a { color: var(--ink, #16161c); transition: color .2s; }
   .h-meta a:hover { color: var(--accent); }
-
-  /* centered scroll arrows — unchanged */
-  .h-scroll {
-    position: absolute;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px;
-    color: var(--ink, #16161c);
-    opacity: 0.55;
-    animation: hbob 2.4s ease-in-out infinite;
-  }
-  .h-scroll svg { width: 16px; height: 11px; display: block; }
-  .h-scroll path {
-    stroke: currentColor; stroke-width: 1.2; fill: none;
-    stroke-linecap: round; stroke-linejoin: round;
-  }
-  @keyframes hbob {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(4px); }
-  }
 
   @media (max-width: 680px) {
     .hero-inner {
@@ -264,14 +253,10 @@ const [mailUser, mailDomain] = email.split('@');
     .h-meta .blk-name h4 {
       margin-bottom: 10px;
       font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
     .h-meta .blk-name .v { font-size: 15px; line-height: 1.65; }
-    .h-scroll { bottom: 18px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .h-scroll { animation: none; }
     .h-spotlight { display: none; }
     .h-roles .r-line { display: none; }
     :global(.h-roles .letter),

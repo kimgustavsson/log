@@ -25,11 +25,7 @@ const devlogPosts = await loadPosts('devlog');
 const writingPosts = await loadPosts('writing');
 ---
 
-<BaseLayout rail={[
-  { id: 'top', label: 'Intro' },
-  { id: 'devlog', label: 'Dev log' },
-  { id: 'writing', label: 'Writing' },
-]}>
+<BaseLayout>
   <Hero />
 
   <section class="block" id="devlog">

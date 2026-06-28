@@ -30,8 +30,8 @@
   --line-strong: rgba(3, 25, 39, 0.26);
 
   /* Typography */
-  --serif: "Newsreader", Georgia, serif;
-  --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
 
   /* Layout */
   --maxw-hero: 1480px; /* wide hero band */
