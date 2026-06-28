@@ -20,7 +20,6 @@ const social = [
       <span class="mt-label">Close</span>
     </button>
     <div class="nav-links" id="navlinks">
-      <span class="nl-rule" aria-hidden="true"></span>
       <div class="nl-group nl-main">
         <a href="/" class="home-link">Home</a>
         {links.map((l) => <a href={l.href}>{l.label}</a>)}
@@ -39,7 +38,6 @@ const social = [
   .logo { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -.01em; display: flex; align-items: center; gap: 9px; color: var(--luxe); }
   .nav-links { display: flex; gap: clamp(18px, 2.4vw, 34px); font-size: 14px; letter-spacing: .01em; }
   .nl-group { display: contents; }
-  .nl-rule { display: none; }
   .nav-links a { padding: 3px 0; color: #0D2B26; transition: color .25s; }
   .nav-links a:hover { color: var(--accent); }
   .menu-toggle { display: none; align-items: center; background: none; border: none; color: #0D2B26; cursor: pointer; }
@@ -52,25 +50,24 @@ const social = [
   @media (max-width: 760px) {
     nav { padding: 18px 20px; }
     .menu-toggle { position: relative; z-index: 2; display: flex; }
-    .menu-toggle.open { position: fixed; top: auto; bottom: 28px; right: 24px; color: var(--white); }
+    .menu-toggle.open { position: fixed; top: auto; bottom: 28px; right: 24px; color: var(--luxe); }
     .nav-links {
       position: fixed; top: 0; left: 0; right: 0; height: 100vh; z-index: 1;
-      background: var(--luxe);
-      flex-direction: row;
+      background: var(--seafoam);
+      flex-direction: column;
       align-items: stretch;
-      gap: 28px;
+      padding: 0 32px;
       font-size: 19px;
       transform: translateY(-100%);
       transition: transform .45s ease;
     }
     .nav-links.open { transform: translateY(0); }
-    .nl-rule { display: block; width: 1px; margin: 110px 0 110px 32px; background: rgba(255, 255, 255, .25); }
     .nl-group { display: flex; flex-direction: column; gap: 20px; }
     .nl-main { margin-top: 110px; }
     .nl-social { margin-top: auto; margin-bottom: 110px; }
-    .nav-links a { font-family: var(--serif); color: var(--white); opacity: .8; padding: 0; }
-    .nav-links a:hover { color: var(--white); opacity: 1; }
-    .home-link { display: block; font-size: 30px; font-weight: 700; opacity: 1; }
+    .nav-links a { font-family: var(--serif); color: var(--luxe); opacity: .85; padding: 0; }
+    .nav-links a:hover { color: var(--accent); opacity: 1; }
+    .home-link { display: block; font-size: 30px; font-weight: 700; color: var(--luxe); opacity: 1; }
   }
 </style>
 
