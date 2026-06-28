@@ -53,10 +53,4 @@ const writingPosts = await loadPosts('writing');
       posts={writingPosts}
     />
   </section>
-
-  <script>
-    // Photo trail is home-only, so it's initialized here rather than in BaseLayout.
-    import { initPhotoTrail } from '../scripts/photo-trail';
-    initPhotoTrail();
-  </script>
 </BaseLayout>

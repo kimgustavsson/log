@@ -9,6 +9,11 @@
 // Wraps each non-whitespace character of `root` in its own `.letter` span
 // (whitespace stays as plain text so words still wrap normally), and stamps
 // a transition-delay on each so a single class toggle cascades them in.
+//
+// Each word's letters are nested inside an inline-block wrapper. Adjacent
+// inline-block boxes get an implicit line-break opportunity between them
+// even with no whitespace in between, so without this wrapper the browser
+// would wrap mid-word at arbitrary letter boundaries instead of at spaces.
 function splitLetters(root: HTMLElement, stepMs: number, baseDelayMs = 0): number {
   let i = 0;
   const walk = (node: Node) => {
@@ -16,17 +21,23 @@ function splitLetters(root: HTMLElement, stepMs: number, baseDelayMs = 0): numbe
       const text = node.textContent ?? '';
       if (!text) return;
       const frag = document.createDocumentFragment();
-      for (const ch of text) {
-        if (/\s/.test(ch)) {
-          frag.appendChild(document.createTextNode(ch));
-        } else {
+      for (const part of text.split(/(\s+)/)) {
+        if (!part) continue;
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(part));
+          continue;
+        }
+        const word = document.createElement('span');
+        word.style.display = 'inline-block';
+        for (const ch of part) {
           const span = document.createElement('span');
           span.className = 'letter';
           span.textContent = ch;
           span.style.transitionDelay = `${baseDelayMs + i * stepMs}ms`;
-          frag.appendChild(span);
+          word.appendChild(span);
           i++;
         }
+        frag.appendChild(word);
       }
       node.replaceWith(frag);
     } else if (node.nodeType === Node.ELEMENT_NODE) {
