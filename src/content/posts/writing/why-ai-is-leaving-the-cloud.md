@@ -9,7 +9,7 @@ For the past few years, "AI" has mostly meant a round trip to a server. You send
 
 ## What "edge AI" actually means
 
-Edge AI just means running a model on or near the device that produces the data (a phone, a camera, a sensor, a car) instead of shipping everything to the cloud first. Training still mostly happens centrally. Inference, the part where the model actually makes a prediction, is moving closer to where the data is created.
+Edge AI just means running a model on or near the device that produces the data (a phone, a camera, a sensor, a car) instead of shipping everything to the cloud first. Training still mostly happens centrally. Inference, the part where the model actually makes a prediction, is moving closer to where the data is created.[^4]
 
 This isn't a new idea. What's new is that it's becoming the default, not the exception.
 
@@ -17,7 +17,7 @@ This isn't a new idea. What's new is that it's becoming the default, not the exc
 
 Three forces are pushing this at once.
 
-**Cost.** The AI boom has created a genuine memory shortage: data centers are consuming an outsized share of global DRAM and NAND supply, and analysts at IoT Analytics increasingly describe this as a structural shift rather than a temporary spike.[^1] That makes cloud inference more expensive at exactly the moment companies want to run more of it.
+**Cost.** The AI boom has created a genuine memory shortage: data centers are consuming an outsized share of global DRAM and NAND supply, and IDC has described this as a structural, potentially permanent reallocation of global chip-manufacturing capacity rather than a temporary spike.[^1] That makes cloud inference more expensive at exactly the moment companies want to run more of it.
 
 **Capability.** Small, efficient models have closed much of the quality gap with their much larger predecessors on well-defined tasks. A model with a few billion parameters can now run comfortably on a laptop or a mid-range phone, which simply wasn't true a couple of years ago.
 
@@ -31,8 +31,7 @@ I'll get into the model side of this in the next post: what's actually small eno
 
 ---
 
-[^1]: IoT Analytics, semiconductor predictions for 2026: memory shortage and OEM shift to edge AI. Via [IoT Tech News](https://iottechnews.com/news/edge-ai-iot-devices-mass-market-inflection-2026/).
+[^1]: IDC, "Global Memory Shortage Crisis: Market Analysis and the Potential Impact on the Smartphone and PC Markets in 2026." [Link](https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/).
 [^2]: IoT Tech News, "Edge AI IoT devices are hitting mass market in 2026": MediaTek Genio and SECO system-on-module launches. [Link](https://iottechnews.com/news/edge-ai-iot-devices-mass-market-inflection-2026/).
 [^3]: Sempra/SDG&E press release, June 2026: Edge Alert Sentinel wildfire response collaboration with Qualcomm and UC San Diego. [Link](https://www.sempra.com/newsroom/press-releases/sdge-qualcomm-and-uc-san-diego-launch-edge-ai-collaboration-advance).
-
-*Background and market sizing also drawn from Wevolver's 2026 Edge AI Technology Report and Grand View Research's edge AI market projections (2025-2033).*
+[^4]: Wevolver, "The 2026 Edge AI Technology Report," developed with Edge Impulse, MIPS, Murata, Synaptics, and Synopsys. [Link](https://www.wevolver.com/article/the-2026-edge-ai-technology-report/future-of-edge-ai).
