@@ -6,21 +6,24 @@
    Palette: monotone (no hue anywhere) so the typography hierarchy reads
    purely through lightness/weight — headings darkest (--luxe), body text a
    step lighter (--ink), secondary/meta text lighter still (--muted), all on
-   a neutral near-white page (--seafoam). Brick Ember (--accent) stays the
-   one deliberate point of color, untouched here on purpose.
+   a neutral near-white page (--seafoam). The handful of hued tokens below
+   (--accent, --menu-accent, --mist-blue) are the only deliberate points of
+   color, each scoped to a specific moment rather than used freely.
    ========================================================================== */
 :root {
   /* Core palette */
   --accent: #ba1200; /* Brick Ember — rare punchy accent (hover, emphasis) */
   --accent-deep: #8f0e00; /* darker red for hover-on-red if needed */
+  --menu-accent: #913731; /* muted brick/wine — mobile hamburger menu background */
+  --mist-blue: #b5c8d4; /* dusty baby blue — cursor glow, hover accent inside the menu */
   --white: #ffffff; /* literal white — text on --accent fills */
 
   /* Monotone hierarchy — darkest to lightest */
   --luxe: #121212; /* near-black — headings, links, active states (most emphasis) */
   --ink: #2e2e2e; /* dark gray — primary body text */
   --muted: #757575; /* medium gray — secondary/meta text (least emphasis) */
-  --seafoam: #f7f7f7; /* neutral near-white — page/section background */
-  --seafoam-deep: #ececec; /* a step darker than --seafoam — tag pills, inline code, raised surfaces */
+  --seafoam: #f0f0f0; /* neutral near-white — page/section background */
+  --seafoam-deep: #e6e6e6; /* a step darker than --seafoam — tag pills, inline code, raised surfaces */
   --code-bg: #1a1a1a; /* near-black — code block background in post bodies */
   --code-text: #f0f0f0; /* near-white — code block text in post bodies */
 

@@ -26,18 +26,24 @@ a { color: inherit; text-decoration: none; }
 ::selection { background: var(--accent); color: var(--white); }
 
 /* ----- Grain texture: a faint film-grain overlay across the whole page -----
-   The noise is baked into the SVG's alpha channel (via feColorMatrix) rather
-   than relying on mix-blend-mode luminance tricks — those go nearly invisible
-   on a light/near-white background since "overlay" can't push white any
-   lighter. Alpha-based grain darkens visibly no matter the base color. */
+   mix-blend-mode: multiply means every pixel can only get darker, never
+   lighter, and how much darker is proportional to how light that pixel
+   already is (multiply scales toward zero). On dark text that has almost no
+   effect — there's little left to multiply away, so glyphs stay crisp. On
+   the near-white page background it reads as a soft, visible speckle.
+   (Earlier attempts: plain black alpha looked like dirty cement at higher
+   opacity; light/white speckles over plain alpha-compositing washed out
+   text by blending it toward white. Multiply with a soft — not pure black —
+   gray avoids both.) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.12;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.6 0.6 0.6 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0.35  0 0 0 0 0.35  0 0 0 0 0.35  0.4 0.4 0.4 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
 }
 
@@ -88,11 +94,10 @@ section.block { padding: clamp(56px, 8vh, 92px) clamp(24px, 6vw, 56px); }
 .head-row h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 4.5vw, 50px); letter-spacing: -.025em; line-height: 1; color: var(--luxe); }
 .head-row .count { font-size: 14px; color: var(--muted); }
 
-/* ----- Cursor glow: a soft accent-colored circle that trails the mouse
+/* ----- Cursor glow: a soft mist-blue circle that trails the mouse
    (cursor-glow.ts). A white "screen" glow is nearly invisible on a light
-   page — screen can't push near-white pixels any brighter. A tinted accent
-   glow on "multiply" darkens/tints reliably no matter how light the
-   background is, and it ties to the one color the site actually uses. */
+   page — screen can't push near-white pixels any brighter. A tinted glow on
+   "multiply" darkens/tints reliably no matter how light the background is. */
 .cursor-glow {
   position: fixed;
   top: 0;
@@ -101,7 +106,7 @@ section.block { padding: clamp(56px, 8vh, 92px) clamp(24px, 6vw, 56px); }
   height: 360px;
   margin: -180px 0 0 -180px;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--mist-blue) 55%, transparent), transparent 70%);
   filter: blur(15px);
   mix-blend-mode: multiply;
   pointer-events: none;

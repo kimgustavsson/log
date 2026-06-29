@@ -58,10 +58,18 @@ const social = [
     .menu-toggle.open { position: fixed; top: auto; bottom: 28px; right: 24px; color: var(--white); }
     .nav-links {
       position: fixed; top: 0; left: 0; right: 0; height: 100vh; z-index: 1;
-      background: var(--luxe);
+      background-color: var(--menu-accent);
+      /* grayscale noise blended with multiply — overlay tested lighter than
+         the intended brick tone (it skews bright since fractalNoise's
+         channel average lands above 0.5), multiply only ever darkens, so
+         the fill reads as ink-on-paper flecks instead of washing pastel */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0.22 0.22 0.22 0 0.45  0.22 0.22 0.22 0 0.45  0.22 0.22 0.22 0 0.45  0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-blend-mode: multiply;
+      background-size: 200px 200px;
       flex-direction: column;
       align-items: stretch;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 40px;
       padding: clamp(90px, 16vh, 130px) 32px;
       font-size: 19px;
       overflow: hidden;
@@ -71,7 +79,7 @@ const social = [
     .nav-links.open { transform: translateY(0); }
     .nl-group { display: flex; flex-direction: column; gap: 20px; }
     .nav-links a { font-family: var(--serif); color: var(--white); opacity: .85; padding: 0; }
-    .nav-links a:hover { color: var(--accent); opacity: 1; }
+    .nav-links a:hover { color: var(--mist-blue); opacity: 1; }
     .home-link { display: block; font-size: 30px; font-weight: 700; color: var(--white); opacity: 1; }
   }
 </style>
