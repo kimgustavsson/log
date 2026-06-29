@@ -5,11 +5,11 @@ date: 2026-06-26
 tags: ["ai", "edge-ai"]
 ---
 
-For most of the last decade, "AI" meant a round trip to a server. You'd send a request, a data center somewhere would think about it, and a response would come back. In 2026, that assumption is starting to break.
+For the past few years, "AI" has mostly meant a round trip to a server. You send a request, a data center thinks about it, and a response comes back. In 2026, that's no longer the only option; a growing share of AI is starting to run right where the data is.
 
 ## What "edge AI" actually means
 
-Edge AI just means running a model on or near the device that produces the data — a phone, a camera, a sensor, a car — instead of shipping everything to the cloud first. Training still mostly happens centrally. Inference, the part where the model actually makes a prediction, is moving closer to where the data is created.
+Edge AI just means running a model on or near the device that produces the data (a phone, a camera, a sensor, a car) instead of shipping everything to the cloud first. Training still mostly happens centrally. Inference, the part where the model actually makes a prediction, is moving closer to where the data is created.
 
 This isn't a new idea. What's new is that it's becoming the default, not the exception.
 
@@ -17,23 +17,22 @@ This isn't a new idea. What's new is that it's becoming the default, not the exc
 
 Three forces are pushing this at once.
 
-**Cost.** The AI boom has created a genuine memory shortage — data centers are consuming an outsized share of global DRAM and NAND supply, and analysts increasingly describe this as a structural shift rather than a temporary spike. That makes cloud inference more expensive at exactly the moment companies want to run more of it.
+**Cost.** The AI boom has created a genuine memory shortage: data centers are consuming an outsized share of global DRAM and NAND supply, and analysts at IoT Analytics increasingly describe this as a structural shift rather than a temporary spike.[^1] That makes cloud inference more expensive at exactly the moment companies want to run more of it.
 
 **Capability.** Small, efficient models have closed much of the quality gap with their much larger predecessors on well-defined tasks. A model with a few billion parameters can now run comfortably on a laptop or a mid-range phone, which simply wasn't true a couple of years ago.
 
-**Reliability.** Some applications can't tolerate a round trip to a server at all — a factory inspection line, a moving vehicle, an emergency response system in an area with patchy connectivity. If the network drops, the system still needs to work.
+**Reliability.** Some applications can't tolerate a round trip to a server at all: a factory inspection line, a moving vehicle, an emergency response system in an area with patchy connectivity. If the network drops, the system still needs to work.
 
 ## Where this is showing up
 
-The clearest signal isn't a research paper, it's procurement. Chipmakers are shipping silicon specifically priced for cost-sensitive, always-local AI in retail and industrial settings. Utilities are pairing environmental sensors with on-site AI processing to catch fast-moving wildfire and weather risk before it reaches a data center at all. None of this is exotic — it's AI being treated as infrastructure rather than a feature.
+The clearest signal isn't a research paper, it's procurement. Chipmakers like MediaTek and SECO are shipping silicon specifically priced for cost-sensitive, always-local AI in retail and industrial settings.[^2] Utilities are pairing environmental sensors with on-site AI processing to catch fast-moving wildfire and weather risk before it reaches a data center at all.[^3] None of this is exotic; it's AI being treated as infrastructure rather than a feature.
 
-I'll get into the model side of this — what's actually small enough to run locally, and what you give up to get there — in the next post.
+I'll get into the model side of this in the next post: what's actually small enough to run locally, and what you give up to get there.
 
 ---
 
-**Sources**
+[^1]: IoT Analytics, semiconductor predictions for 2026: memory shortage and OEM shift to edge AI. Via [IoT Tech News](https://iottechnews.com/news/edge-ai-iot-devices-mass-market-inflection-2026/).
+[^2]: IoT Tech News, "Edge AI IoT devices are hitting mass market in 2026": MediaTek Genio and SECO system-on-module launches. [Link](https://iottechnews.com/news/edge-ai-iot-devices-mass-market-inflection-2026/).
+[^3]: Sempra/SDG&E press release, June 2026: Edge Alert Sentinel wildfire response collaboration with Qualcomm and UC San Diego. [Link](https://www.sempra.com/newsroom/press-releases/sdge-qualcomm-and-uc-san-diego-launch-edge-ai-collaboration-advance).
 
-- Wevolver, _The 2026 Edge AI Technology Report_ — on-device model trends and the "Goldilocks zone" for edge models
-- Grand View Research, via IoT Tech Magazine — edge AI market sizing, 2025–2033
-- IoT Analytics, semiconductor predictions for 2026 — memory shortage and OEM shift to edge AI
-- Sempra/SDG&E press release, June 2026 — Edge Alert Sentinel wildfire response collaboration with Qualcomm and UC San Diego
+*Background and market sizing also drawn from Wevolver's 2026 Edge AI Technology Report and Grand View Research's edge AI market projections (2025-2033).*
