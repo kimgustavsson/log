@@ -6,7 +6,12 @@
 @import './tokens.css';
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* html needs its own background, not just body's — on iOS/Android the
+   rubber-band overscroll past the top/bottom edge paints the <html> canvas
+   color, and an unset (white) html background flashes as a white box over
+   the page's actual (near-white but not white) background during that
+   bounce. */
+html { scroll-behavior: smooth; background: var(--seafoam); }
 body {
   /* a soft tinted glow near the top, fading into the flat base color —
      adds depth without reading as an obvious gradient */
